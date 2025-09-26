@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: Travel & Transportation - Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .lesson-header {
+            position: relative;
+            margin-bottom: 3rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-header-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .lesson-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        
+        .lesson-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(249, 115, 22, 0.5));
+            z-index: 1;
+        }
+        
+        .lesson-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .lesson-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lesson-header-content p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .lesson-content {
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .lesson-main {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .lesson-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .sidebar-section {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .sidebar-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        .sidebar-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-section li {
+            margin-bottom: 0.25rem;
+        }
+        .sidebar-section a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .sidebar-section a:hover {
+            color: var(--primary-color);
+        }
+        .phrase-bank {
+            background: var(--accent-bg);
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .phrase-bank h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .phrase-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .phrase-item:last-child {
+            border-bottom: none;
+        }
+        .indonesian {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+        .english {
+            color: var(--text-color);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .pronunciation {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'Courier New', monospace;
+        }
+        .quiz-container {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: 1.5rem;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--accent-bg);
+            border-radius: var(--radius-lg);
+        }
+        .quiz-question h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.5rem;
+        }
+        .quiz-option {
+            padding: 0.75rem;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--accent-bg);
+        }
+        .quiz-option.correct {
+            border-color: var(--success-color);
+            background: var(--success-bg);
+        }
+        .quiz-option.incorrect {
+            border-color: var(--error-color);
+            background: var(--error-bg);
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .quiz-feedback.correct {
+            background: var(--success-bg);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+        .quiz-feedback.incorrect {
+            background: var(--error-bg);
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
+        }
+        .cultural-note {
+            background: var(--accent-bg);
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            margin: 1rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .cultural-image {
+            width: 100%;
+            height: 150px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+        .cultural-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .lesson-content {
+                grid-template-columns: 1fr;
+            }
+            .lesson-header-content h1 {
+                font-size: 2rem;
+            }
+            .lesson-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Bahasa Indonesia Mastery Course</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#lessons">Lessons</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lesson-container">
+        <div class="lesson-header">
+            <div class="lesson-header-image">
+                <img src="../Surf 1.jpg" alt="Indonesian travel and transportation" />
+                <div class="lesson-header-overlay"></div>
+            </div>
+            <div class="lesson-header-content">
+                <h1>Lesson 6: Travel & Transportation</h1>
+                <p>Master essential phrases for getting around Indonesia like a local.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="lesson-main">
+                <section id="transportation-basics">
+                    <h2>Transportation Basics</h2>
+                    <div class="phrase-bank">
+                        <h3>🚗 Getting Around</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Di mana terminal bus?</div>
+                                <div class="pronunciation">dee mah-nah ter-mee-nal boos</div>
+                            </div>
+                            <div class="english">Where is the bus terminal?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Berapa harga tiket ke...?</div>
+                                <div class="pronunciation">ber-ah-pah har-gah tee-ket keh</div>
+                            </div>
+                            <div class="english">How much is a ticket to...?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Jam berapa bus ini berangkat?</div>
+                                <div class="pronunciation">jam ber-ah-pah boos ee-nee ber-ang-kat</div>
+                            </div>
+                            <div class="english">What time does this bus leave?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Apakah ada bus langsung?</div>
+                                <div class="pronunciation">ah-pah-kah ah-dah boos lang-soong</div>
+                            </div>
+                            <div class="english">Is there a direct bus?</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="taxi-ojek">
+                    <h2>Taxi & Ojek (Motorbike Taxi)</h2>
+                    <div class="phrase-bank">
+                        <h3>🏍️ Taxi & Ojek Phrases</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Tolong antar saya ke...</div>
+                                <div class="pronunciation">toh-long an-tar sah-yah keh</div>
+                            </div>
+                            <div class="english">Please take me to...</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Berapa ongkosnya?</div>
+                                <div class="pronunciation">ber-ah-pah ong-kos-nyah</div>
+                            </div>
+                            <div class="english">How much is the fare?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Pakai argo atau nego?</div>
+                                <div class="pronunciation">pah-kai ar-go ah-tah neh-go</div>
+                            </div>
+                            <div class="english">Use meter or negotiate?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Tolong pelan-pelan</div>
+                                <div class="pronunciation">toh-long peh-lan peh-lan</div>
+                            </div>
+                            <div class="english">Please drive slowly</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="directions">
+                    <h2>Asking for Directions</h2>
+                    <div class="phrase-bank">
+                        <h3>🧭 Direction Phrases</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Maaf, jalan ke pantai bagaimana?</div>
+                                <div class="pronunciation">mah-af, jah-lan keh pan-tai ba-gai-mah-nah</div>
+                            </div>
+                            <div class="english">Excuse me, how do I get to the beach?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Lurus terus atau belok?</div>
+                                <div class="pronunciation">loo-roos ter-roos ah-tah beh-lok</div>
+                            </div>
+                            <div class="english">Go straight or turn?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Jauh atau dekat?</div>
+                                <div class="pronunciation">jah-woh ah-tah deh-kat</div>
+                            </div>
+                            <div class="english">Is it far or close?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bisa jalan kaki?</div>
+                                <div class="pronunciation">bee-sah jah-lan kah-kee</div>
+                            </div>
+                            <div class="english">Can I walk there?</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="accommodation">
+                    <h2>Accommodation</h2>
+                    <div class="phrase-bank">
+                        <h3>🏨 Hotel & Guesthouse</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Ada kamar kosong?</div>
+                                <div class="pronunciation">ah-dah kah-mar ko-song</div>
+                            </div>
+                            <div class="english">Do you have any rooms available?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Berapa harga per malam?</div>
+                                <div class="pronunciation">ber-ah-pah har-gah per mah-lam</div>
+                            </div>
+                            <div class="english">How much per night?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Ada AC dan WiFi?</div>
+                                <div class="pronunciation">ah-dah ah-see dan wee-fee</div>
+                            </div>
+                            <div class="english">Does it have AC and WiFi?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bisa lihat kamar dulu?</div>
+                                <div class="pronunciation">bee-sah lee-hat kah-mar doo-loo</div>
+                            </div>
+                            <div class="english">Can I see the room first?</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cultural-note">
+                    <h2>Cultural Note</h2>
+                    <div class="cultural-note">
+                        <div class="cultural-image">
+                            <img src="../nias-the-point.jpg" alt="Indonesian transportation culture" />
+                        </div>
+                        <h3>Getting Around Like a Local</h3>
+                        <p>Transportation in Indonesia varies dramatically from bustling Jakarta to remote surf breaks. In cities, apps like Gojek and Grab are essential, but in smaller towns, you'll need to negotiate with local drivers.</p>
+                        <p>Ojek (motorbike taxis) are incredibly common and often the fastest way to navigate traffic. Always negotiate the price before getting on - it's expected! For longer distances, buses and ferries connect the islands, but schedules can be flexible.</p>
+                        <p>When traveling to surf spots, many areas are only accessible by boat or motorbike. Local knowledge is invaluable - ask surfers and locals about the best transportation options to reach those perfect waves.</p>
+                    </div>
+                </section>
+
+                <section id="quiz">
+                    <h2>Chapter 6 Quiz</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h4>Question 1: How do you ask "Where is the bus terminal?"</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="correct">Di mana terminal bus?</div>
+                                <div class="quiz-option" data-answer="incorrect">Berapa harga tiket?</div>
+                                <div class="quiz-option" data-answer="incorrect">Jam berapa bus berangkat?</div>
+                                <div class="quiz-option" data-answer="incorrect">Ada bus langsung?</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Di mana terminal bus?" means "Where is the bus terminal?"</div>
+                            <div class="quiz-feedback incorrect">Incorrect. The correct answer is "Di mana terminal bus?"</div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>Question 2: What does "Berapa ongkosnya?" mean?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="incorrect">Where are you going?</div>
+                                <div class="quiz-option" data-answer="correct">How much is the fare?</div>
+                                <div class="quiz-option" data-answer="incorrect">Please drive slowly</div>
+                                <div class="quiz-option" data-answer="incorrect">Use the meter</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Berapa ongkosnya?" asks about the fare price.</div>
+                            <div class="quiz-feedback incorrect">Incorrect. "Berapa ongkosnya?" means "How much is the fare?"</div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>Question 3: How do you ask if you can walk somewhere?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="incorrect">Jauh atau dekat?</div>
+                                <div class="quiz-option" data-answer="incorrect">Lurus terus atau belok?</div>
+                                <div class="quiz-option" data-answer="correct">Bisa jalan kaki?</div>
+                                <div class="quiz-option" data-answer="incorrect">Maaf, jalan ke pantai bagaimana?</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Bisa jalan kaki?" means "Can I walk there?"</div>
+                            <div class="quiz-feedback incorrect">Incorrect. "Bisa jalan kaki?" means "Can I walk there?"</div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <a href="lesson-05.html" class="nav-button secondary">← Previous: Adjectives & Family</a>
+                    <a href="lesson-07.html" class="nav-button">Next: Shopping & Negotiation →</a>
+                    <a href="../index.html" class="nav-button secondary">🏠 Back to Course Overview</a>
+                </div>
+            </div>
+
+            <div class="lesson-sidebar">
+                <div class="sidebar-section">
+                    <h3>Lesson Navigation</h3>
+                    <ul>
+                        <li><a href="#transportation-basics">Transportation Basics</a></li>
+                        <li><a href="#taxi-ojek">Taxi & Ojek</a></li>
+                        <li><a href="#directions">Asking Directions</a></li>
+                        <li><a href="#accommodation">Accommodation</a></li>
+                        <li><a href="#cultural-note">Cultural Note</a></li>
+                        <li><a href="#quiz">Chapter Quiz</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Quick Tips</h3>
+                    <ul>
+                        <li>Always negotiate ojek prices</li>
+                        <li>Use "Tolong" (please) for politeness</li>
+                        <li>Ask "Berapa?" for prices</li>
+                        <li>Learn basic direction words</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    const feedback = question.querySelectorAll('.quiz-feedback');
+                    
+                    // Remove previous selections
+                    allOptions.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Hide all feedback
+                    feedback.forEach(fb => fb.style.display = 'none');
+                    
+                    // Show selected answer
+                    if (this.dataset.answer === 'correct') {
+                        this.classList.add('correct');
+                        question.querySelector('.quiz-feedback.correct').style.display = 'block';
+                    } else {
+                        this.classList.add('incorrect');
+                        question.querySelector('.quiz-feedback.incorrect').style.display = 'block';
+                        // Show correct answer
+                        const correctOption = question.querySelector('.quiz-option[data-answer="correct"]');
+                        correctOption.classList.add('correct');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

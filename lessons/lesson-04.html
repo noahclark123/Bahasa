@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 4: Verbs & Sentence Structure - Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .lesson-header {
+            position: relative;
+            margin-bottom: 3rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-header-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .lesson-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        
+        .lesson-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(249, 115, 22, 0.5));
+            z-index: 1;
+        }
+        
+        .lesson-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .lesson-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lesson-header-content p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .lesson-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .lesson-main {
+            background: var(--bg-primary);
+        }
+        .lesson-sidebar {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .sentence-structure {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .structure-example {
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .structure-indonesian {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .structure-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .structure-breakdown {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .verb-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .verb-indonesian {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .verb-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .verb-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .negation-explanation {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .negation-example {
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .negation-word {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .food-menu {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .menu-item {
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-indonesian {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .menu-english {
+            color: var(--text-secondary);
+        }
+        .quiz-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.5rem;
+        }
+        .quiz-option {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-secondary);
+        }
+        .quiz-option.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .nav-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .nav-button.secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+        .nav-button.secondary:hover {
+            background: var(--border-color);
+        }
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        .sidebar-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .sidebar-section ul {
+            list-style: none;
+        }
+        .sidebar-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .sidebar-section li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-section a {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .sidebar-section a:hover {
+            color: var(--primary-color);
+        }
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .vocabulary-table th,
+        .vocabulary-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .vocabulary-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        .vocabulary-table tr:hover {
+            background: var(--bg-secondary);
+        }
+        .cultural-note {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        @media (max-width: 768px) {
+            .lesson-content {
+                grid-template-columns: 1fr;
+            }
+            .lesson-sidebar {
+                position: static;
+            }
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Bahasa Indonesia Course</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#lessons">Lessons</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lesson-container">
+        <div class="lesson-header">
+            <div class="lesson-header-image">
+                <img src="../lagundry-bay-barrel.jpg" alt="Lagundry Bay barrel wave" />
+                <div class="lesson-header-overlay"></div>
+            </div>
+            <div class="lesson-header-content">
+                <h1>Lesson 4: Verbs & Sentence Structure</h1>
+                <p>Master basic verbs and learn how to form proper Indonesian sentences.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="lesson-main">
+                <section id="sentence-structure">
+                    <h2>Basic Sentence Structure (S-P-O)</h2>
+                    <div class="sentence-structure">
+                        <p>Indonesian sentence structure is wonderfully straightforward: <strong>Subject - Predicate - Object</strong>. The predicate is usually a verb. It's very similar to English, but simpler, as verbs don't change for tense or person.</p>
+                        <p>"Saya makan" can mean I eat, I am eating, or I ate, depending on context (or by adding time markers like "yesterday" or "tomorrow," which we'll learn later).</p>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Saya (Subject) makan (Predicate/Verb) nasi (Object).</div>
+                        <div class="structure-english">I eat rice.</div>
+                        <div class="structure-breakdown">Subject - Predicate - Object</div>
+                    </div>
+                </section>
+
+                <section id="common-verbs">
+                    <h2>Common Verbs</h2>
+                    <p>Here are some of the most useful verbs to get you started:</p>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">makan</div>
+                        <div class="verb-english">to eat</div>
+                        <div class="verb-pronunciation">mah-kahn</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">minum</div>
+                        <div class="verb-english">to drink</div>
+                        <div class="verb-pronunciation">mee-noom</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">tidur</div>
+                        <div class="verb-english">to sleep</div>
+                        <div class="verb-pronunciation">tee-door</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">pergi</div>
+                        <div class="verb-english">to go</div>
+                        <div class="verb-pronunciation">per-gee</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">mau</div>
+                        <div class="verb-english">to want</div>
+                        <div class="verb-pronunciation">ma-oo</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">suka</div>
+                        <div class="verb-english">to like</div>
+                        <div class="verb-pronunciation">soo-kah</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">baca</div>
+                        <div class="verb-english">to read</div>
+                        <div class="verb-pronunciation">bah-chah</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">beli</div>
+                        <div class="verb-english">to buy</div>
+                        <div class="verb-pronunciation">buh-lee</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">berselancar</div>
+                        <div class="verb-english">to surf</div>
+                        <div class="verb-pronunciation">bur-suh-lan-char</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">menginap</div>
+                        <div class="verb-english">to stay overnight</div>
+                        <div class="verb-pronunciation">muh-ngee-nahp</div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-indonesian">sewa</div>
+                        <div class="verb-english">to rent</div>
+                        <div class="verb-pronunciation">seh-wah</div>
+                    </div>
+
+                    <h3>Examples</h3>
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Dia suka kopi.</div>
+                        <div class="structure-english">He/She likes coffee.</div>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Mereka mau pergi.</div>
+                        <div class="structure-english">They want to go.</div>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Saya baca buku.</div>
+                        <div class="structure-english">I read a book.</div>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Besok saya mau berselancar.</div>
+                        <div class="structure-english">Tomorrow I want to go surfing. (<strong>Besok</strong> = tomorrow)</div>
+                    </div>
+                </section>
+
+                <section id="negation">
+                    <h2>Negation: Tidak vs Bukan</h2>
+                    <div class="negation-explanation">
+                        <p>Indonesian has two words for "no" or "not," and they have specific uses.</p>
+                        
+                        <h3>Tidak</h3>
+                        <p><strong>Tidak</strong> (tee-dak) - Used to negate <strong>verbs</strong> and <strong>adjectives</strong>.</p>
+                        
+                        <div class="negation-example">
+                            <div class="structure-indonesian">Saya <span class="negation-word">tidak</span> mau.</div>
+                            <div class="structure-english">I don't want to. (negating the verb 'mau')</div>
+                        </div>
+
+                        <div class="negation-example">
+                            <div class="structure-indonesian">Kopi ini <span class="negation-word">tidak</span> panas.</div>
+                            <div class="structure-english">This coffee is not hot. (negating the adjective 'panas')</div>
+                        </div>
+
+                        <h3>Bukan</h3>
+                        <p><strong>Bukan</strong> (boo-kahn) - Used to negate <strong>nouns</strong>.</p>
+                        
+                        <div class="negation-example">
+                            <div class="structure-indonesian">Ini <span class="negation-word">bukan</span> kopi.</div>
+                            <div class="structure-english">This is not coffee. (negating the noun 'kopi')</div>
+                        </div>
+
+                        <div class="negation-example">
+                            <div class="structure-indonesian">Saya <span class="negation-word">bukan</span> turis.</div>
+                            <div class="structure-english">I am not a tourist. (negating the noun 'turis')</div>
+                        </div>
+
+                        <p><strong>Think of it this way:</strong> <span class="negation-word">tidak</span> is for actions and descriptions, while <span class="negation-word">bukan</span> is for things and identities.</p>
+                    </div>
+                </section>
+
+                <section id="simple-statements">
+                    <h2>Simple Statements</h2>
+                    <p>Now you can combine everything you've learned to make sentences!</p>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Saya mau minum teh.</div>
+                        <div class="structure-english">I want to drink tea.</div>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Dia tidak suka makanan pedas.</div>
+                        <div class="structure-english">He/She doesn't like spicy food.</div>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Ini bukan mobil saya.</div>
+                        <div class="structure-english">This is not my car.</div>
+                    </div>
+                </section>
+
+                <section id="ordering-food">
+                    <h2>Ordering Food & Drinks</h2>
+                    <div class="food-menu">
+                        <p>This is one of the most important skills! Most local eateries are called <strong>warung</strong>. Here's how to order:</p>
+
+                        <div class="structure-example">
+                            <div class="structure-indonesian">Saya mau pesan...</div>
+                            <div class="structure-english">I want to order...</div>
+                            <div class="structure-breakdown">sah-yah ma-oo puh-sahn</div>
+                        </div>
+
+                        <h3>Common Menu Items</h3>
+                        <div class="menu-item">
+                            <div class="menu-indonesian">nasi goreng</div>
+                            <div class="menu-english">fried rice</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-indonesian">mie goreng</div>
+                            <div class="menu-english">fried noodles</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-indonesian">sate ayam</div>
+                            <div class="menu-english">chicken satay</div>
+                        </div>
+
+                        <div class="structure-example">
+                            <div class="structure-indonesian">Saya mau yang ini.</div>
+                            <div class="structure-english">I want this one. (Pointing at a menu)</div>
+                            <div class="structure-breakdown">sah-yah ma-oo yahng ee-nee</div>
+                        </div>
+
+                        <div class="structure-example">
+                            <div class="structure-indonesian">Apakah ini pedas?</div>
+                            <div class="structure-english">Is this spicy?</div>
+                            <div class="structure-breakdown">ah-pah-kah ee-nee puh-dahs</div>
+                        </div>
+
+                        <div class="structure-example">
+                            <div class="structure-indonesian">Jangan pedas.</div>
+                            <div class="structure-english">Don't make it spicy.</div>
+                            <div class="structure-breakdown">jah-ngan puh-dahs</div>
+                        </div>
+
+                        <h3>Ordering Drinks</h3>
+                        <div class="structure-example">
+                            <div class="structure-indonesian">Saya mau es teh.</div>
+                            <div class="structure-english">I want iced tea.</div>
+                            <div class="structure-breakdown">sah-yah ma-oo ess teh</div>
+                        </div>
+
+                        <div class="structure-example">
+                            <div class="structure-indonesian">Saya mau jus alpukat.</div>
+                            <div class="structure-english">I want avocado juice.</div>
+                            <div class="structure-breakdown">sah-yah ma-oo joos al-poo-kat</div>
+                        </div>
+
+                        <div class="structure-example">
+                            <div class="structure-indonesian">Minta bonnya.</div>
+                            <div class="structure-english">Can I have the bill?</div>
+                            <div class="structure-breakdown">min-tah bon-nyah</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="making-plans">
+                    <h2>Making Plans & Connecting</h2>
+                    <p>Here's how to use your verbs to connect with people:</p>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Ayo makan bersama!</div>
+                        <div class="structure-english">Let's eat together!</div>
+                        <div class="structure-breakdown">ah-yo mah-kahn bur-sah-mah</div>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Ayo pergi ke pantai.</div>
+                        <div class="structure-english">Let's go to the beach.</div>
+                        <div class="structure-breakdown">ah-yo per-gee kuh pan-thai</div>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Kamu mau berselancar besok?</div>
+                        <div class="structure-english">Do you want to surf tomorrow?</div>
+                        <div class="structure-breakdown">kah-moo ma-oo bur-suh-lan-char beh-sok</div>
+                    </div>
+
+                    <div class="structure-example">
+                        <div class="structure-indonesian">Ombaknya bagus hari ini.</div>
+                        <div class="structure-english">The waves are good today.</div>
+                        <div class="structure-breakdown">ohm-bak-nyah bah-goos hah-ree ee-nee</div>
+                    </div>
+                </section>
+
+                <section id="vocabulary">
+                    <h2>Chapter 4 Vocabulary</h2>
+                    <table class="vocabulary-table">
+                        <thead>
+                            <tr>
+                                <th>Indonesian Word</th>
+                                <th>English Translation</th>
+                                <th>Pronunciation Guide</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Makan</td>
+                                <td>To eat</td>
+                                <td>mah-kahn</td>
+                            </tr>
+                            <tr>
+                                <td>Minum</td>
+                                <td>To drink</td>
+                                <td>mee-noom</td>
+                            </tr>
+                            <tr>
+                                <td>Beli</td>
+                                <td>To buy</td>
+                                <td>buh-lee</td>
+                            </tr>
+                            <tr>
+                                <td>Berselancar</td>
+                                <td>To surf</td>
+                                <td>bur-suh-lan-char</td>
+                            </tr>
+                            <tr>
+                                <td>Menginap</td>
+                                <td>To stay overnight</td>
+                                <td>muh-ngee-nahp</td>
+                            </tr>
+                            <tr>
+                                <td>Sewa</td>
+                                <td>To rent</td>
+                                <td>seh-wah</td>
+                            </tr>
+                            <tr>
+                                <td>Nasi</td>
+                                <td>(Cooked) Rice</td>
+                                <td>nah-see</td>
+                            </tr>
+                            <tr>
+                                <td>Tidak</td>
+                                <td>No / Not (verbs/adj)</td>
+                                <td>tee-dak</td>
+                            </tr>
+                            <tr>
+                                <td>Bukan</td>
+                                <td>No / Not (nouns)</td>
+                                <td>boo-kahn</td>
+                            </tr>
+                            <tr>
+                                <td>Pedas</td>
+                                <td>Spicy</td>
+                                <td>puh-dahs</td>
+                            </tr>
+                            <tr>
+                                <td>Pesan</td>
+                                <td>To order</td>
+                                <td>puh-sahn</td>
+                            </tr>
+                            <tr>
+                                <td>Minta</td>
+                                <td>To ask for</td>
+                                <td>min-tah</td>
+                            </tr>
+                            <tr>
+                                <td>Jangan</td>
+                                <td>Don't</td>
+                                <td>jah-ngan</td>
+                            </tr>
+                            <tr>
+                                <td>Nasi Goreng</td>
+                                <td>Fried Rice</td>
+                                <td>nah-see gor-eng</td>
+                            </tr>
+                            <tr>
+                                <td>Mie Goreng</td>
+                                <td>Fried Noodles</td>
+                                <td>mee gor-eng</td>
+                            </tr>
+                            <tr>
+                                <td>Bersama</td>
+                                <td>Together</td>
+                                <td>bur-sah-mah</td>
+                            </tr>
+                            <tr>
+                                <td>Besok</td>
+                                <td>Tomorrow</td>
+                                <td>beh-sok</td>
+                            </tr>
+                            <tr>
+                                <td>Hari ini</td>
+                                <td>Today</td>
+                                <td>hah-ree ee-nee</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="cultural-note">
+                    <h2>Cultural Note</h2>
+                    <div class="cultural-note">
+                        <h3>Food Culture</h3>
+                        <p>Food is at the heart of Indonesian culture. The word for cooked rice, <strong>nasi</strong>, is so central that the phrase "sudah makan?" ("have you eaten yet?") is often used as a general greeting, like "how are you?".</p>
+                        <p>Sharing food is a key part of socializing. Inviting someone to eat with "Ayo makan!" is a great gesture of friendship.</p>
+                        <p>When eating, especially in more traditional settings, it's polite to only use your right hand, as the left hand is considered unclean. Also, it's polite to finish the food on your plate to show you enjoyed the meal!</p>
+                    </div>
+                </section>
+
+                <section id="quiz">
+                    <h2>Chapter 4 Quiz</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h4>1. Which is the correct word order for a basic Indonesian sentence?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Subject-Object-Predicate</div>
+                                <div class="quiz-option" data-answer="wrong">b) Predicate-Subject-Object</div>
+                                <div class="quiz-option" data-answer="c">c) Subject-Predicate-Object</div>
+                                <div class="quiz-option" data-answer="wrong">d) Object-Predicate-Subject</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>2. How would you say "I want to eat"?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Saya makan mau.</div>
+                                <div class="quiz-option" data-answer="wrong">b) Mau saya makan.</div>
+                                <div class="quiz-option" data-answer="c">c) Saya mau makan.</div>
+                                <div class="quiz-option" data-answer="wrong">d) Makan saya mau.</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>3. Choose the correct negation for this sentence: "Ini ___ buku." (This is not a book.)</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) tidak</div>
+                                <div class="quiz-option" data-answer="b">b) bukan</div>
+                                <div class="quiz-option" data-answer="wrong">c) apa</div>
+                                <div class="quiz-option" data-answer="wrong">d) jangan</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>4. Choose the correct negation for this sentence: "Dia ___ suka teh." (He/She does not like tea.)</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="a">a) tidak</div>
+                                <div class="quiz-option" data-answer="wrong">b) bukan</div>
+                                <div class="quiz-option" data-answer="wrong">c) sama</div>
+                                <div class="quiz-option" data-answer="wrong">d) belum</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>5. What is the verb for "to drink"?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="a">a) Minum</div>
+                                <div class="quiz-option" data-answer="wrong">b) Makan</div>
+                                <div class="quiz-option" data-answer="wrong">c) Tidur</div>
+                                <div class="quiz-option" data-answer="wrong">d) Pergi</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <a href="lesson-03.html" class="nav-button secondary">← Previous: Numbers & Time</a>
+                    <a href="lesson-05.html" class="nav-button">Next: Adjectives & Family →</a>
+                </div>
+            </div>
+
+            <div class="lesson-sidebar">
+                <div class="sidebar-section">
+                    <h4>Lesson Topics</h4>
+                    <ul>
+                        <li><a href="#sentence-structure">Sentence Structure</a></li>
+                        <li><a href="#common-verbs">Common Verbs</a></li>
+                        <li><a href="#negation">Negation (Tidak vs Bukan)</a></li>
+                        <li><a href="#simple-statements">Simple Statements</a></li>
+                        <li><a href="#ordering-food">Ordering Food & Drinks</a></li>
+                        <li><a href="#making-plans">Making Plans</a></li>
+                        <li><a href="#vocabulary">Vocabulary List</a></li>
+                        <li><a href="#cultural-note">Cultural Note</a></li>
+                        <li><a href="#quiz">Chapter Quiz</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Quick Reference</h4>
+                    <ul>
+                        <li><a href="https://www.kamus.net/" target="_blank">Indonesian Dictionary</a></li>
+                        <li><a href="https://forvo.com/languages/id/" target="_blank">Pronunciation Guide</a></li>
+                        <li><a href="https://www.indonesianpod101.com/" target="_blank">IndonesianPod101</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Practice</h4>
+                    <ul>
+                        <li><a href="https://www.duolingo.com/course/id/en/Learn-Indonesian" target="_blank">Duolingo Indonesian</a></li>
+                        <li><a href="https://www.lingq.com/en/learn-indonesian-online/" target="_blank">LingQ Indonesian</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bahasa Indonesia Mastery Course. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    
+                    // Remove previous selections
+                    allOptions.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Mark the selected option
+                    if (this.dataset.answer === 'c' || this.dataset.answer === 'b' || this.dataset.answer === 'a') {
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.add('incorrect');
+                    }
+                    
+                    // Mark correct answer
+                    allOptions.forEach(opt => {
+                        if (opt.dataset.answer === 'c' || opt.dataset.answer === 'b' || opt.dataset.answer === 'a') {
+                            opt.classList.add('correct');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

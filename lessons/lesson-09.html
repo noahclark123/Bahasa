@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 9: Social & Cultural - Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .lesson-header {
+            position: relative;
+            margin-bottom: 3rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-header-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .lesson-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        
+        .lesson-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(249, 115, 22, 0.5));
+            z-index: 1;
+        }
+        
+        .lesson-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .lesson-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lesson-header-content p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .lesson-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .lesson-main {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .lesson-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .sidebar-section {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .sidebar-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .sidebar-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-section li {
+            margin-bottom: 0.5rem;
+        }
+        .sidebar-section a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .sidebar-section a:hover {
+            color: var(--primary-color);
+        }
+        .phrase-bank {
+            background: var(--accent-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .phrase-bank h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .phrase-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .phrase-item:last-child {
+            border-bottom: none;
+        }
+        .indonesian {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        .english {
+            color: var(--text-color);
+            font-style: italic;
+        }
+        .pronunciation {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: 'Courier New', monospace;
+        }
+        .quiz-container {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+        }
+        .quiz-question {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--accent-bg);
+            border-radius: var(--radius-lg);
+        }
+        .quiz-question h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.75rem;
+        }
+        .quiz-option {
+            padding: 1rem;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--accent-bg);
+        }
+        .quiz-option.correct {
+            border-color: var(--success-color);
+            background: var(--success-bg);
+        }
+        .quiz-option.incorrect {
+            border-color: var(--error-color);
+            background: var(--error-bg);
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .quiz-feedback.correct {
+            background: var(--success-bg);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+        .quiz-feedback.incorrect {
+            background: var(--error-bg);
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
+        }
+        .cultural-note {
+            background: var(--accent-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .cultural-image {
+            width: 100%;
+            height: 200px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .cultural-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .lesson-content {
+                grid-template-columns: 1fr;
+            }
+            .lesson-header-content h1 {
+                font-size: 2rem;
+            }
+            .lesson-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Bahasa Indonesia Mastery Course</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#lessons">Lessons</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lesson-container">
+        <div class="lesson-header">
+            <div class="lesson-header-image">
+                <img src="../20201231083609_bill.jpg" alt="Indonesian social and cultural interactions" />
+                <div class="lesson-header-overlay"></div>
+            </div>
+            <div class="lesson-header-content">
+                <h1>Lesson 9: Social & Cultural</h1>
+                <p>Master social interactions and cultural nuances in Indonesian society.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="lesson-main">
+                <section id="social-greetings">
+                    <h2>Advanced Social Greetings</h2>
+                    <div class="phrase-bank">
+                        <h3>🤝 Social Interactions</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Senang bertemu dengan Anda</div>
+                                <div class="pronunciation">seh-nang ber-teh-moo den-gan an-dah</div>
+                            </div>
+                            <div class="english">Nice to meet you</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Mohon maaf sebelumnya</div>
+                                <div class="pronunciation">moh-hon mah-af seh-beh-loom-nyah</div>
+                            </div>
+                            <div class="english">Excuse me in advance</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Terima kasih banyak</div>
+                                <div class="pronunciation">ter-ee-mah kah-see bah-nyah</div>
+                            </div>
+                            <div class="english">Thank you very much</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Sama-sama</div>
+                                <div class="pronunciation">sah-mah sah-mah</div>
+                            </div>
+                            <div class="english">You're welcome</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cultural-respect">
+                    <h2>Cultural Respect & Etiquette</h2>
+                    <div class="phrase-bank">
+                        <h3>🙏 Respectful Phrases</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Mohon izin</div>
+                                <div class="pronunciation">moh-hon ee-zeen</div>
+                            </div>
+                            <div class="english">May I have permission</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Maaf mengganggu</div>
+                                <div class="pronunciation">mah-af meng-gang-goo</div>
+                            </div>
+                            <div class="english">Sorry for disturbing</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Boleh saya bertanya?</div>
+                                <div class="pronunciation">boh-leh sah-yah ber-tah-nyah</div>
+                            </div>
+                            <div class="english">May I ask a question?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Terima kasih atas kesabaran Anda</div>
+                                <div class="pronunciation">ter-ee-mah kah-see ah-tas keh-sah-bah-ran an-dah</div>
+                            </div>
+                            <div class="english">Thank you for your patience</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="surf-culture">
+                    <h2>Surf Culture & Community</h2>
+                    <div class="phrase-bank">
+                        <h3>🏄‍♂️ Surf Community</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bagaimana ombaknya hari ini?</div>
+                                <div class="pronunciation">ba-gai-mah-nah om-bak-nyah hah-ree ee-nee</div>
+                            </div>
+                            <div class="english">How are the waves today?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Apakah ada spot lain yang bagus?</div>
+                                <div class="pronunciation">ah-pah-kah ah-dah spot lah-een yang bah-goos</div>
+                            </div>
+                            <div class="english">Are there other good spots?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Boleh ikut surfing bersama?</div>
+                                <div class="pronunciation">boh-leh ee-koot ser-fing ber-sah-mah</div>
+                            </div>
+                            <div class="english">Can I surf together?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Di mana tempat sewa papan selancar?</div>
+                                <div class="pronunciation">dee mah-nah tem-pat seh-wah pah-pan seh-lan-char</div>
+                            </div>
+                            <div class="english">Where can I rent a surfboard?</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="local-connections">
+                    <h2>Building Local Connections</h2>
+                    <div class="phrase-bank">
+                        <h3>🤝 Local Relationships</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Saya dari Australia/Amerika</div>
+                                <div class="pronunciation">sah-yah dah-ree aus-trah-lee-ah/ah-meh-ree-kah</div>
+                            </div>
+                            <div class="english">I'm from Australia/America</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Saya belajar bahasa Indonesia</div>
+                                <div class="pronunciation">sah-yah be-lah-jar bah-hah-sah in-do-neh-see-ah</div>
+                            </div>
+                            <div class="english">I'm learning Indonesian</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bisa tolong ajari saya?</div>
+                                <div class="pronunciation">bee-sah toh-long ah-jah-ree sah-yah</div>
+                            </div>
+                            <div class="english">Can you help teach me?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Saya ingin tahu lebih banyak tentang budaya Indonesia</div>
+                                <div class="pronunciation">sah-yah ee-ngin tah-hoo leh-bee bah-nyah ten-tang boo-dah-yah in-do-neh-see-ah</div>
+                            </div>
+                            <div class="english">I want to learn more about Indonesian culture</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cultural-note">
+                    <h2>Cultural Note</h2>
+                    <div class="cultural-note">
+                        <div class="cultural-image">
+                            <img src="../nias-the-point.jpg" alt="Indonesian social culture and community" />
+                        </div>
+                        <h3>The Heart of Indonesian Social Culture</h3>
+                        <p>Indonesian culture places immense value on harmony, respect, and community. The concept of "gotong royong" (mutual cooperation) is central to Indonesian society. When you show respect and genuine interest in local culture, doors open everywhere.</p>
+                        <p>In surf communities, this translates to sharing waves, helping fellow surfers, and respecting local surfers' knowledge. Many legendary surf spots were discovered through local friendships and cultural exchange. Learning Indonesian shows respect and often leads to incredible experiences and friendships.</p>
+                        <p>Remember: Indonesians are incredibly hospitable and patient with language learners. Your effort to speak Indonesian, even imperfectly, is deeply appreciated and often leads to warm friendships and cultural exchanges that last a lifetime.</p>
+                    </div>
+                </section>
+
+                <section id="quiz">
+                    <h2>Chapter 9 Quiz</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h4>Question 1: How do you say "Nice to meet you"?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="correct">Senang bertemu dengan Anda</div>
+                                <div class="quiz-option" data-answer="incorrect">Mohon maaf sebelumnya</div>
+                                <div class="quiz-option" data-answer="incorrect">Terima kasih banyak</div>
+                                <div class="quiz-option" data-answer="incorrect">Sama-sama</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Senang bertemu dengan Anda" means "Nice to meet you."</div>
+                            <div class="quiz-feedback incorrect">Incorrect. The correct answer is "Senang bertemu dengan Anda."</div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>Question 2: What does "Mohon izin" mean?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="incorrect">Sorry for disturbing</div>
+                                <div class="quiz-option" data-answer="correct">May I have permission</div>
+                                <div class="quiz-option" data-answer="incorrect">May I ask a question?</div>
+                                <div class="quiz-option" data-answer="incorrect">Thank you for your patience</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Mohon izin" means "May I have permission."</div>
+                            <div class="quiz-feedback incorrect">Incorrect. "Mohon izin" means "May I have permission."</div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>Question 3: How do you ask "How are the waves today?"</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="incorrect">Apakah ada spot lain yang bagus?</div>
+                                <div class="quiz-option" data-answer="correct">Bagaimana ombaknya hari ini?</div>
+                                <div class="quiz-option" data-answer="incorrect">Boleh ikut surfing bersama?</div>
+                                <div class="quiz-option" data-answer="incorrect">Di mana tempat sewa papan selancar?</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Bagaimana ombaknya hari ini?" means "How are the waves today?"</div>
+                            <div class="quiz-feedback incorrect">Incorrect. "Bagaimana ombaknya hari ini?" means "How are the waves today?"</div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <a href="lesson-08.html" class="nav-button secondary">← Previous: Emergency & Health</a>
+                    <a href="../index.html" class="nav-button">🏠 Back to Course Overview</a>
+                </div>
+            </div>
+
+            <div class="lesson-sidebar">
+                <div class="sidebar-section">
+                    <h3>Lesson Navigation</h3>
+                    <ul>
+                        <li><a href="#social-greetings">Social Greetings</a></li>
+                        <li><a href="#cultural-respect">Cultural Respect</a></li>
+                        <li><a href="#surf-culture">Surf Culture</a></li>
+                        <li><a href="#local-connections">Local Connections</a></li>
+                        <li><a href="#cultural-note">Cultural Note</a></li>
+                        <li><a href="#quiz">Chapter Quiz</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Cultural Tips</h3>
+                    <ul>
+                        <li>Always use "Mohon" for politeness</li>
+                        <li>Show genuine interest in culture</li>
+                        <li>Respect local surfers' knowledge</li>
+                        <li>Be patient and humble</li>
+                    </ul>
+                </div>
+
+
+                <div class="sidebar-section">
+                    <h3>🎉 Course Complete!</h3>
+                    <p>Congratulations on completing all 9 lessons! You now have the foundation to communicate effectively in Indonesian.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    const feedback = question.querySelectorAll('.quiz-feedback');
+                    
+                    // Remove previous selections
+                    allOptions.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Hide all feedback
+                    feedback.forEach(fb => fb.style.display = 'none');
+                    
+                    // Show selected answer
+                    if (this.dataset.answer === 'correct') {
+                        this.classList.add('correct');
+                        question.querySelector('.quiz-feedback.correct').style.display = 'block';
+                    } else {
+                        this.classList.add('incorrect');
+                        question.querySelector('.quiz-feedback.incorrect').style.display = 'block';
+                        // Show correct answer
+                        const correctOption = question.querySelector('.quiz-option[data-answer="correct"]');
+                        correctOption.classList.add('correct');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

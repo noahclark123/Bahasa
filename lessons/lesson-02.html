@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2: Pronouns & Simple Questions - Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .lesson-header {
+            position: relative;
+            margin-bottom: 3rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-header-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .lesson-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        
+        .lesson-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(249, 115, 22, 0.5));
+            z-index: 1;
+        }
+        
+        .lesson-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .lesson-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lesson-header-content p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .lesson-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .lesson-main {
+            background: var(--bg-primary);
+        }
+        .lesson-sidebar {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .pronoun-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .pronoun {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .pronoun-meaning {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .pronoun-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .pronoun-usage {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .question-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .indonesian-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .english-text {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .pronunciation-text {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .vocab-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            transition: all 0.2s ease;
+        }
+        .vocab-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+        .vocab-indonesian {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .vocab-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .vocab-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .quiz-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.5rem;
+        }
+        .quiz-option {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-secondary);
+        }
+        .quiz-option.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .nav-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .nav-button.secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+        .nav-button.secondary:hover {
+            background: var(--border-color);
+        }
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        .sidebar-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .sidebar-section ul {
+            list-style: none;
+        }
+        .sidebar-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .sidebar-section li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-section a {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .sidebar-section a:hover {
+            color: var(--primary-color);
+        }
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .vocabulary-table th,
+        .vocabulary-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .vocabulary-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        .vocabulary-table tr:hover {
+            background: var(--bg-secondary);
+        }
+        .cultural-note {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        @media (max-width: 768px) {
+            .lesson-content {
+                grid-template-columns: 1fr;
+            }
+            .lesson-sidebar {
+                position: static;
+            }
+            .vocabulary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Bahasa Indonesia Course</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#lessons">Lessons</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lesson-container">
+        <div class="lesson-header">
+            <div class="lesson-header-image">
+                <img src="../Surf2.jpeg" alt="Indonesian surf culture" />
+                <div class="lesson-header-overlay"></div>
+            </div>
+            <div class="lesson-header-content">
+                <h1>Lesson 2: Pronouns & Simple Questions</h1>
+                <p>Learn personal pronouns and how to ask basic questions in Indonesian.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="lesson-main">
+                <section id="pronouns">
+                    <h2>Subject Pronouns</h2>
+                    <p>Pronouns in Indonesian are simple because they don't change based on their position in a sentence. Here are the most important ones:</p>
+
+                    <div class="pronoun-card">
+                        <div class="pronoun">Saya</div>
+                        <div class="pronoun-meaning">I, me, my</div>
+                        <div class="pronoun-pronunciation">sah-yah</div>
+                        <div class="pronoun-usage">Can be used in formal and informal situations</div>
+                    </div>
+
+                    <div class="pronoun-card">
+                        <div class="pronoun">Anda</div>
+                        <div class="pronoun-meaning">You (formal, polite)</div>
+                        <div class="pronoun-pronunciation">an-dah</div>
+                        <div class="pronoun-usage">Use with strangers, elders, or in business</div>
+                    </div>
+
+                    <div class="pronoun-card">
+                        <div class="pronoun">Kamu</div>
+                        <div class="pronoun-meaning">You (informal)</div>
+                        <div class="pronoun-pronunciation">kah-moo</div>
+                        <div class="pronoun-usage">Use with friends, family, people your age or younger</div>
+                    </div>
+
+                    <div class="pronoun-card">
+                        <div class="pronoun">Dia</div>
+                        <div class="pronoun-meaning">He, she, him, her</div>
+                        <div class="pronoun-pronunciation">dee-ah</div>
+                        <div class="pronoun-usage">There is no gender in Indonesian pronouns!</div>
+                    </div>
+
+                    <div class="pronoun-card">
+                        <div class="pronoun">Kita</div>
+                        <div class="pronoun-meaning">We, us (inclusive)</div>
+                        <div class="pronoun-pronunciation">kee-tah</div>
+                        <div class="pronoun-usage">Includes the person you're talking to</div>
+                    </div>
+
+                    <div class="pronoun-card">
+                        <div class="pronoun">Kami</div>
+                        <div class="pronoun-meaning">We, us (exclusive)</div>
+                        <div class="pronoun-pronunciation">kah-mee</div>
+                        <div class="pronoun-usage">Does NOT include the person you're talking to</div>
+                    </div>
+
+                    <div class="pronoun-card">
+                        <div class="pronoun">Mereka</div>
+                        <div class="pronoun-meaning">They, them</div>
+                        <div class="pronoun-pronunciation">meh-reh-kah</div>
+                        <div class="pronoun-usage">Used for multiple people</div>
+                    </div>
+
+                    <div class="cultural-note">
+                        <h3>Important: Kita vs Kami</h3>
+                        <p>The distinction between <strong>kita</strong> and <strong>kami</strong> is important. If you and a friend are talking to a third person and say, "<strong>Kita</strong> pergi ke toko" (We are going to the store), it means all three of you are going. If you say, "<strong>Kami</strong> pergi ke toko," it means only you and your friend are going, not the person you're speaking to.</p>
+                    </div>
+                </section>
+
+                <section id="yes-no-questions">
+                    <h2>Forming Simple "Yes/No" Questions</h2>
+                    <p>The easiest way to form a yes/no question is to take a statement and say it with a rising intonation at the end.</p>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Anda sehat.</div>
+                        <div class="english-text">You are healthy. (Statement)</div>
+                        <div class="pronunciation-text">an-dah suh-hat</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Anda sehat?</div>
+                        <div class="english-text">Are you healthy? (Question)</div>
+                        <div class="pronunciation-text">an-dah suh-hat? (with rising intonation)</div>
+                    </div>
+
+                    <h3>Using -kah Particle</h3>
+                    <p>Another common way is to add the particle <strong>-kah</strong> to the word you are questioning, which is often the first word. This is slightly more formal.</p>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Apakah Anda sehat?</div>
+                        <div class="english-text">Are you healthy?</div>
+                        <div class="pronunciation-text">ah-pah-kah an-dah suh-hat</div>
+                    </div>
+
+                    <p><strong>"Apa"</strong> is a question word, and adding <strong>-kah</strong> makes it clear it's a yes/no question.</p>
+                </section>
+
+                <section id="what-where-questions">
+                    <h2>Asking "What?" and "Where?" Questions</h2>
+
+                    <h3>What Questions</h3>
+                    <div class="question-card">
+                        <div class="indonesian-text">Apa?</div>
+                        <div class="english-text">What?</div>
+                        <div class="pronunciation-text">ah-pah</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Apa ini?</div>
+                        <div class="english-text">What is this?</div>
+                        <div class="pronunciation-text">ah-pah ee-nee</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Ini apa?</div>
+                        <div class="english-text">What is this? (more common in speech)</div>
+                        <div class="pronunciation-text">ee-nee ah-pah</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Ini buku.</div>
+                        <div class="english-text">This is a book. (Response)</div>
+                        <div class="pronunciation-text">ee-nee boo-koo</div>
+                    </div>
+
+                    <h3>Where Questions</h3>
+                    <div class="question-card">
+                        <div class="indonesian-text">Di mana?</div>
+                        <div class="english-text">Where?</div>
+                        <div class="pronunciation-text">dee mah-nah</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Di mana toilet?</div>
+                        <div class="english-text">Where is the toilet?</div>
+                        <div class="pronunciation-text">dee mah-nah toy-let</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Toilet di sana.</div>
+                        <div class="english-text">The toilet is over there. (Response)</div>
+                        <div class="pronunciation-text">toy-let dee sah-nah</div>
+                    </div>
+                </section>
+
+                <section id="travel-directions">
+                    <h2>Asking for Directions & Surf Info</h2>
+                    <p>Here are some useful phrases for travelers and surfers:</p>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Di mana pantai [Beach Name]?</div>
+                        <div class="english-text">Where is [Beach Name] beach?</div>
+                        <div class="pronunciation-text">dee mah-nah pan-thai [Beach Name]</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Belok kiri / Belok kanan / Lurus saja</div>
+                        <div class="english-text">Turn left / Turn right / Go straight</div>
+                        <div class="pronunciation-text">buh-lok kee-ree / buh-lok kah-nan / loo-roos sah-jah</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Aman untuk berselancar?</div>
+                        <div class="english-text">Is it safe to surf?</div>
+                        <div class="pronunciation-text">ah-mahn oon-took bur-suh-lan-char</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Di mana saya bisa sewa papan selancar?</div>
+                        <div class="english-text">Where can I rent a surfboard?</div>
+                        <div class="pronunciation-text">dee mah-nah sah-yah bee-sah seh-wah pah-pahn suh-lan-char</div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="indonesian-text">Berapa harga untuk satu jam?</div>
+                        <div class="english-text">How much for one hour?</div>
+                        <div class="pronunciation-text">buh-rah-pah har-gah oon-took sah-too jahm</div>
+                    </div>
+                </section>
+
+                <section id="common-nouns">
+                    <h2>Common Nouns for Everyday Objects</h2>
+                    <div class="vocabulary-grid">
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Rumah</div>
+                            <div class="vocab-english">House</div>
+                            <div class="vocab-pronunciation">roo-mah</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Mobil</div>
+                            <div class="vocab-english">Car</div>
+                            <div class="vocab-pronunciation">mo-beel</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Buku</div>
+                            <div class="vocab-english">Book</div>
+                            <div class="vocab-pronunciation">boo-koo</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Air</div>
+                            <div class="vocab-english">Water</div>
+                            <div class="vocab-pronunciation">ah-eer</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Makanan</div>
+                            <div class="vocab-english">Food</div>
+                            <div class="vocab-pronunciation">mah-kah-nan</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Kopi</div>
+                            <div class="vocab-english">Coffee</div>
+                            <div class="vocab-pronunciation">ko-pee</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Teh</div>
+                            <div class="vocab-english">Tea</div>
+                            <div class="vocab-pronunciation">teh</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Toilet</div>
+                            <div class="vocab-english">Toilet</div>
+                            <div class="vocab-pronunciation">toy-let</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Toko</div>
+                            <div class="vocab-english">Store / Shop</div>
+                            <div class="vocab-pronunciation">to-ko</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Papan selancar</div>
+                            <div class="vocab-english">Surfboard</div>
+                            <div class="vocab-pronunciation">pah-pahn suh-lan-char</div>
+                        </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Sepeda motor</div>
+                            <div class="vocab-english">Motorcycle / Scooter</div>
+                            <div class="vocab-pronunciation">suh-peh-dah mo-tor</div>
+                                </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Warung</div>
+                            <div class="vocab-english">Small, local eatery</div>
+                            <div class="vocab-pronunciation">wah-roong</div>
+                            </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Pantai</div>
+                            <div class="vocab-english">Beach</div>
+                            <div class="vocab-pronunciation">pan-thai</div>
+                            </div>
+                        <div class="vocab-card">
+                            <div class="vocab-indonesian">Ombak</div>
+                            <div class="vocab-english">Wave</div>
+                            <div class="vocab-pronunciation">ohm-bak</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="vocabulary">
+                    <h2>Chapter 2 Vocabulary</h2>
+                    <table class="vocabulary-table">
+                        <thead>
+                            <tr>
+                                <th>Indonesian Word</th>
+                                <th>English Translation</th>
+                                <th>Pronunciation Guide</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kamu</td>
+                                <td>You (informal)</td>
+                                <td>kah-moo</td>
+                            </tr>
+                            <tr>
+                                <td>Dia</td>
+                                <td>He / She</td>
+                                <td>dee-ah</td>
+                            </tr>
+                            <tr>
+                                <td>Kita</td>
+                                <td>We (inclusive)</td>
+                                <td>kee-tah</td>
+                            </tr>
+                            <tr>
+                                <td>Kami</td>
+                                <td>We (exclusive)</td>
+                                <td>kah-mee</td>
+                            </tr>
+                            <tr>
+                                <td>Mereka</td>
+                                <td>They</td>
+                                <td>meh-reh-kah</td>
+                            </tr>
+                            <tr>
+                                <td>Apa</td>
+                                <td>What</td>
+                                <td>ah-pah</td>
+                            </tr>
+                            <tr>
+                                <td>Di mana</td>
+                                <td>Where</td>
+                                <td>dee mah-nah</td>
+                            </tr>
+                            <tr>
+                                <td>Ini</td>
+                                <td>This</td>
+                                <td>ee-nee</td>
+                            </tr>
+                            <tr>
+                                <td>Itu</td>
+                                <td>That</td>
+                                <td>ee-too</td>
+                            </tr>
+                            <tr>
+                                <td>Di sini</td>
+                                <td>Here</td>
+                                <td>dee see-nee</td>
+                            </tr>
+                            <tr>
+                                <td>Di sana</td>
+                                <td>There</td>
+                                <td>dee sah-nah</td>
+                            </tr>
+                            <tr>
+                                <td>Rumah</td>
+                                <td>House</td>
+                                <td>roo-mah</td>
+                            </tr>
+                            <tr>
+                                <td>Makanan</td>
+                                <td>Food</td>
+                                <td>mah-kah-nan</td>
+                            </tr>
+                            <tr>
+                                <td>Air</td>
+                                <td>Water</td>
+                                <td>ah-eer</td>
+                            </tr>
+                            <tr>
+                                <td>Toko</td>
+                                <td>Shop / Store</td>
+                                <td>to-ko</td>
+                            </tr>
+                            <tr>
+                                <td>Sewa</td>
+                                <td>To rent</td>
+                                <td>seh-wah</td>
+                            </tr>
+                            <tr>
+                                <td>Papan selancar</td>
+                                <td>Surfboard</td>
+                                <td>pah-pahn suh-lan-char</td>
+                            </tr>
+                            <tr>
+                                <td>Aman</td>
+                                <td>Safe</td>
+                                <td>ah-mahn</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="cultural-note">
+                    <h2>Cultural Note</h2>
+                    <div class="cultural-note">
+                        <h3>Jam Karet (Rubber Time)</h3>
+                        <p>Have you ever heard of <strong>jam karet</strong>, or "rubber time"? It's a well-known concept in Indonesia that reflects a more relaxed and flexible approach to time and punctuality. While it's not an excuse to be late for important business meetings, it's common for social gatherings to start a bit later than scheduled. It's part of the laid-back culture.</p>
+                        <p>So if you're meeting a friend and they're 15-30 minutes late, don't worry—it's likely just a case of jam karet! For surfing, however, be mindful of the tides (<strong>pasang surut</strong>)—nature doesn't operate on rubber time!</p>
+                    </div>
+                </section>
+
+                <section id="quiz">
+                    <h2>Chapter 2 Quiz</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h4>1. Which pronoun would you use to speak to a new boss or an older person?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Kamu</div>
+                                <div class="quiz-option" data-answer="wrong">b) Dia</div>
+                                <div class="quiz-option" data-answer="c">c) Anda</div>
+                                <div class="quiz-option" data-answer="wrong">d) Saya</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>2. What is the meaning of "Dia"?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) They</div>
+                                <div class="quiz-option" data-answer="wrong">b) We</div>
+                                <div class="quiz-option" data-answer="wrong">c) I</div>
+                                <div class="quiz-option" data-answer="d">d) He / She</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>3. You and your friend are talking to a waiter about your order. Which "we" should you use?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Kita</div>
+                                <div class="quiz-option" data-answer="b">b) Kami</div>
+                                <div class="quiz-option" data-answer="wrong">c) Mereka</div>
+                                <div class="quiz-option" data-answer="wrong">d) Anda</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>4. How do you ask "What is this?"</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Di mana ini?</div>
+                                <div class="quiz-option" data-answer="wrong">b) Siapa ini?</div>
+                                <div class="quiz-option" data-answer="c">c) Apa ini?</div>
+                                <div class="quiz-option" data-answer="wrong">d) Anda ini?</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>5. The correct question word for "Where" is...</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Apa</div>
+                                <div class="quiz-option" data-answer="b">b) Di mana</div>
+                                <div class="quiz-option" data-answer="wrong">c) Siapa</div>
+                                <div class="quiz-option" data-answer="wrong">d) -kah</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <a href="lesson-01.html" class="nav-button secondary">← Previous: Alphabet & Greetings</a>
+                    <a href="lesson-03.html" class="nav-button">Next: Numbers & Time →</a>
+                </div>
+            </div>
+
+            <div class="lesson-sidebar">
+                <div class="sidebar-section">
+                    <h4>Lesson Topics</h4>
+                    <ul>
+                        <li><a href="#pronouns">Subject Pronouns</a></li>
+                        <li><a href="#yes-no-questions">Yes/No Questions</a></li>
+                        <li><a href="#what-where-questions">What & Where Questions</a></li>
+                        <li><a href="#travel-directions">Travel & Directions</a></li>
+                        <li><a href="#common-nouns">Common Nouns</a></li>
+                        <li><a href="#vocabulary">Vocabulary List</a></li>
+                        <li><a href="#cultural-note">Cultural Note</a></li>
+                        <li><a href="#quiz">Chapter Quiz</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Quick Reference</h4>
+                    <ul>
+                        <li><a href="https://www.kamus.net/" target="_blank">Indonesian Dictionary</a></li>
+                        <li><a href="https://forvo.com/languages/id/" target="_blank">Pronunciation Guide</a></li>
+                        <li><a href="https://www.indonesianpod101.com/" target="_blank">IndonesianPod101</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Practice</h4>
+                    <ul>
+                        <li><a href="https://www.duolingo.com/course/id/en/Learn-Indonesian" target="_blank">Duolingo Indonesian</a></li>
+                        <li><a href="https://www.lingq.com/en/learn-indonesian-online/" target="_blank">LingQ Indonesian</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bahasa Indonesia Mastery Course. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    
+                    // Remove previous selections
+                    allOptions.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Mark the selected option
+                    if (this.dataset.answer === 'c' || this.dataset.answer === 'b' || this.dataset.answer === 'd') {
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.add('incorrect');
+                    }
+                    
+                    // Mark correct answer
+                    allOptions.forEach(opt => {
+                        if (opt.dataset.answer === 'c' || opt.dataset.answer === 'b' || opt.dataset.answer === 'd') {
+                            opt.classList.add('correct');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

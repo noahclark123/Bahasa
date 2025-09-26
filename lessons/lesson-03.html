@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: Numbers, Days & Time - Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .lesson-header {
+            position: relative;
+            margin-bottom: 3rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-header-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .lesson-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        
+        .lesson-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(249, 115, 22, 0.5));
+            z-index: 1;
+        }
+        
+        .lesson-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .lesson-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lesson-header-content p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .lesson-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .lesson-main {
+            background: var(--bg-primary);
+        }
+        .lesson-sidebar {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .number-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .number-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+        .number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .number-word {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .number-pronunciation {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .day-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .day-indonesian {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .day-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .day-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .time-example {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .time-indonesian {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .time-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .time-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .pattern-explanation {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quiz-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.5rem;
+        }
+        .quiz-option {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-secondary);
+        }
+        .quiz-option.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .nav-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .nav-button.secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+        .nav-button.secondary:hover {
+            background: var(--border-color);
+        }
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        .sidebar-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .sidebar-section ul {
+            list-style: none;
+        }
+        .sidebar-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .sidebar-section li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-section a {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .sidebar-section a:hover {
+            color: var(--primary-color);
+        }
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .vocabulary-table th,
+        .vocabulary-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .vocabulary-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        .vocabulary-table tr:hover {
+            background: var(--bg-secondary);
+        }
+        .cultural-note {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .practical-examples {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        @media (max-width: 768px) {
+            .lesson-content {
+                grid-template-columns: 1fr;
+            }
+            .lesson-sidebar {
+                position: static;
+            }
+            .number-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Bahasa Indonesia Course</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#lessons">Lessons</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lesson-container">
+        <div class="lesson-header">
+            <div class="lesson-header-image">
+                <img src="../nias-wave.jpg" alt="Nias wave surf adventure" />
+                <div class="lesson-header-overlay"></div>
+            </div>
+            <div class="lesson-header-content">
+                <h1>Lesson 3: Numbers, Days & Time</h1>
+                <p>Learn to count, tell time, and discuss days of the week in Indonesian.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="lesson-main">
+                <section id="numbers">
+                    <h2>Numbers 1-100</h2>
+                    <p>Numbers in Indonesian follow a very logical pattern. Learn 1-10, and the rest becomes much easier.</p>
+
+                    <h3>Basic Numbers 1-10</h3>
+                    <div class="number-grid">
+                        <div class="number-card">
+                            <div class="number">1</div>
+                            <div class="number-word">satu</div>
+                            <div class="number-pronunciation">sah-too</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">2</div>
+                            <div class="number-word">dua</div>
+                            <div class="number-pronunciation">doo-ah</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">3</div>
+                            <div class="number-word">tiga</div>
+                            <div class="number-pronunciation">tee-gah</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">4</div>
+                            <div class="number-word">empat</div>
+                            <div class="number-pronunciation">uhm-paht</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">5</div>
+                            <div class="number-word">lima</div>
+                            <div class="number-pronunciation">lee-mah</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">6</div>
+                            <div class="number-word">enam</div>
+                            <div class="number-pronunciation">uh-nahm</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">7</div>
+                            <div class="number-word">tujuh</div>
+                            <div class="number-pronunciation">too-jooh</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">8</div>
+                            <div class="number-word">delapan</div>
+                            <div class="number-pronunciation">duh-lah-pahn</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">9</div>
+                            <div class="number-word">sembilan</div>
+                            <div class="number-pronunciation">suhm-bee-lahn</div>
+                        </div>
+                        <div class="number-card">
+                            <div class="number">10</div>
+                            <div class="number-word">sepuluh</div>
+                            <div class="number-pronunciation">suh-poo-looh</div>
+                        </div>
+                    </div>
+
+                    <div class="pattern-explanation">
+                        <h3>Number Patterns</h3>
+                        <p><strong>For 11-19:</strong> You add the word <strong>belas</strong> after the number (1-9). <strong>Satu</strong> becomes <strong>se-</strong>.</p>
+                        <ul>
+                            <li>11 - <strong>sebelas</strong> (<strong>se</strong> + <strong>belas</strong>)</li>
+                            <li>12 - <strong>dua belas</strong></li>
+                            <li>13 - <strong>tiga belas</strong></li>
+                            <li>...and so on up to 19 (<strong>sembilan belas</strong>)</li>
+                        </ul>
+                        
+                        <p><strong>For the tens (20, 30, etc.):</strong> You add the word <strong>puluh</strong>.</p>
+                        <ul>
+                            <li>20 - <strong>dua puluh</strong></li>
+                            <li>21 - <strong>dua puluh satu</strong></li>
+                            <li>30 - <strong>tiga puluh</strong></li>
+                            <li>...and so on</li>
+                        </ul>
+                        
+                        <p><strong>100:</strong> <strong>seratus</strong> (<strong>se</strong> + <strong>ratus</strong>)</p>
+                    </div>
+                </section>
+
+                <section id="asking-how-much">
+                    <h2>Asking "How much/many?"</h2>
+                    <p>The question word <strong>Berapa?</strong> is incredibly useful, especially when shopping.</p>
+
+                    <div class="time-example">
+                        <div class="time-indonesian">Berapa?</div>
+                        <div class="time-english">How much / How many?</div>
+                        <div class="time-pronunciation">buh-rah-pah</div>
+                    </div>
+
+                    <div class="time-example">
+                        <div class="time-indonesian">Berapa harganya?</div>
+                        <div class="time-english">How much is the price? (Very common)</div>
+                        <div class="time-pronunciation">buh-rah-pah har-gah-nyah</div>
+                    </div>
+                </section>
+
+                <section id="days-week">
+                    <h2>Days of the Week</h2>
+                    <p>Here are the days of the week in Indonesian:</p>
+
+                    <div class="day-card">
+                        <div class="day-indonesian">Senin</div>
+                        <div class="day-english">Monday</div>
+                        <div class="day-pronunciation">suh-nin</div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-indonesian">Selasa</div>
+                        <div class="day-english">Tuesday</div>
+                        <div class="day-pronunciation">suh-lah-sah</div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-indonesian">Rabu</div>
+                        <div class="day-english">Wednesday</div>
+                        <div class="day-pronunciation">rah-boo</div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-indonesian">Kamis</div>
+                        <div class="day-english">Thursday</div>
+                        <div class="day-pronunciation">kah-mees</div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-indonesian">Jumat</div>
+                        <div class="day-english">Friday</div>
+                        <div class="day-pronunciation">joom-at</div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-indonesian">Sabtu</div>
+                        <div class="day-english">Saturday</div>
+                        <div class="day-pronunciation">sahb-too</div>
+                    </div>
+
+                    <div class="day-card">
+                        <div class="day-indonesian">Minggu</div>
+                        <div class="day-english">Sunday</div>
+                        <div class="day-pronunciation">ming-goo</div>
+                    </div>
+
+                    <p>The word for "day" is <strong>hari</strong>. So, "Monday" is <strong>Hari Senin</strong>.</p>
+                </section>
+
+                <section id="telling-time">
+                    <h2>Telling Time</h2>
+                    <p>Learn how to ask for and tell the time in Indonesian:</p>
+
+                    <div class="time-example">
+                        <div class="time-indonesian">Jam berapa sekarang?</div>
+                        <div class="time-english">What time is it now?</div>
+                        <div class="time-pronunciation">jahm buh-rah-pah suh-kah-rahng</div>
+                    </div>
+
+                    <p><strong>Jam</strong> means "hour". <strong>Berapa</strong> means "how many". So, "How many hours?"</p>
+
+                    <h3>Stating the Time</h3>
+                    <p>To state the time, you say <strong>Jam</strong> + <strong>the hour</strong>.</p>
+
+                    <div class="time-example">
+                        <div class="time-indonesian">Jam satu.</div>
+                        <div class="time-english">It's 1 o'clock</div>
+                        <div class="time-pronunciation">jahm sah-too</div>
+                    </div>
+
+                    <div class="time-example">
+                        <div class="time-indonesian">Jam lima.</div>
+                        <div class="time-english">It's 5 o'clock</div>
+                        <div class="time-pronunciation">jahm lee-mah</div>
+                    </div>
+
+                    <h3>Minutes Past the Hour</h3>
+                    <p>For minutes past the hour, use <strong>lewat</strong>.</p>
+
+                    <div class="time-example">
+                        <div class="time-indonesian">Jam tiga lewat sepuluh.</div>
+                        <div class="time-english">3:10 (Hour three pass ten)</div>
+                        <div class="time-pronunciation">jahm tee-gah leh-what suh-poo-looh</div>
+                    </div>
+
+                    <div class="time-example">
+                        <div class="time-indonesian">Jam tujuh lewat dua puluh lima.</div>
+                        <div class="time-english">7:25 (Hour seven pass twenty-five)</div>
+                        <div class="time-pronunciation">jahm too-jooh leh-what doo-ah poo-looh lee-mah</div>
+                    </div>
+                </section>
+
+                <section id="practical-applications">
+                    <h2>Practical Applications for Travel</h2>
+                    <div class="practical-examples">
+                        <p>Using numbers is essential for daily transactions:</p>
+
+                        <div class="time-example">
+                            <div class="time-indonesian">Sewa motor, dua jam.</div>
+                            <div class="time-english">Rent a motorbike, two hours</div>
+                            <div class="time-pronunciation">seh-wah mo-tor, doo-ah jahm</div>
+                        </div>
+
+                        <div class="time-example">
+                            <div class="time-indonesian">Kamar ini, tiga malam.</div>
+                            <div class="time-english">This room, for three nights</div>
+                            <div class="time-pronunciation">kah-mar ee-nee, tee-gah mah-lahm</div>
+                        </div>
+
+                        <div class="time-example">
+                            <div class="time-indonesian">Pasang jam berapa?</div>
+                            <div class="time-english">What time is high tide?</div>
+                            <div class="time-pronunciation">pah-sahng jahm buh-rah-pah</div>
+                        </div>
+
+                        <div class="time-example">
+                            <div class="time-indonesian">Surut jam berapa?</div>
+                            <div class="time-english">What time is low tide?</div>
+                            <div class="time-pronunciation">soo-root jahm buh-rah-pah</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="vocabulary">
+                    <h2>Chapter 3 Vocabulary</h2>
+                    <table class="vocabulary-table">
+                        <thead>
+                            <tr>
+                                <th>Indonesian Word</th>
+                                <th>English Translation</th>
+                                <th>Pronunciation Guide</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Berapa</td>
+                                <td>How much / how many</td>
+                                <td>buh-rah-pah</td>
+                            </tr>
+                            <tr>
+                                <td>Harga</td>
+                                <td>Price</td>
+                                <td>har-gah</td>
+                            </tr>
+                            <tr>
+                                <td>Jam</td>
+                                <td>Hour / O'clock / Time</td>
+                                <td>jahm</td>
+                            </tr>
+                            <tr>
+                                <td>Sekarang</td>
+                                <td>Now</td>
+                                <td>suh-kah-rahng</td>
+                            </tr>
+                            <tr>
+                                <td>Lewat</td>
+                                <td>Pass / Past</td>
+                                <td>leh-what</td>
+                            </tr>
+                            <tr>
+                                <td>Hari</td>
+                                <td>Day</td>
+                                <td>hah-ree</td>
+                            </tr>
+                            <tr>
+                                <td>Senin, Selasa...</td>
+                                <td>Monday, Tuesday...</td>
+                                <td>(see list above)</td>
+                            </tr>
+                            <tr>
+                                <td>Satu, dua...</td>
+                                <td>One, two...</td>
+                                <td>(see list above)</td>
+                            </tr>
+                            <tr>
+                                <td>Belas</td>
+                                <td>-teen (suffix)</td>
+                                <td>buh-lahs</td>
+                            </tr>
+                            <tr>
+                                <td>Puluh</td>
+                                <td>ten (suffix for tens)</td>
+                                <td>poo-looh</td>
+                            </tr>
+                            <tr>
+                                <td>Ratus</td>
+                                <td>hundred</td>
+                                <td>rah-toos</td>
+                            </tr>
+                            <tr>
+                                <td>Pasang</td>
+                                <td>High tide</td>
+                                <td>pah-sahng</td>
+                            </tr>
+                            <tr>
+                                <td>Surut</td>
+                                <td>Low tide</td>
+                                <td>soo-root</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="cultural-note">
+                    <h2>Cultural Note</h2>
+                    <div class="cultural-note">
+                        <h3>Bargaining (Tawar-menawar)</h3>
+                        <p>Bargaining, or <strong>tawar-menawar</strong>, is a common and expected practice in traditional markets (<strong>pasar</strong>), with street vendors, and even for services like renting a scooter or surfboard in Indonesia. It's a friendly and social interaction, not an argument.</p>
+                        <p>The first price offered is often inflated. As a foreigner, you might be given a higher price, but a smile and a polite "Bisa kurang?" (<strong>Can it be less?</strong>) can open up a negotiation. Never start with a ridiculously low offer, and always keep the interaction light and friendly. It's a fun way to practice your numbers!</p>
+                    </div>
+                </section>
+
+                <section id="quiz">
+                    <h2>Chapter 3 Quiz</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h4>1. How would you write the number 25 in Indonesian?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Dua belas lima</div>
+                                <div class="quiz-option" data-answer="wrong">b) Lima puluh dua</div>
+                                <div class="quiz-option" data-answer="c">c) Dua puluh lima</div>
+                                <div class="quiz-option" data-answer="wrong">d) Dua lima</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>2. What is the word for "eleven"?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Satu belas</div>
+                                <div class="quiz-option" data-answer="wrong">b) Sepuluh satu</div>
+                                <div class="quiz-option" data-answer="c">c) Sebelas</div>
+                                <div class="quiz-option" data-answer="wrong">d) Satu puluh</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>3. If you want to ask "How much is the price?", you say...</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Jam berapa?</div>
+                                <div class="quiz-option" data-answer="wrong">b) Apa kabar?</div>
+                                <div class="quiz-option" data-answer="c">c) Berapa harganya?</div>
+                                <div class="quiz-option" data-answer="wrong">d) Siapa nama Anda?</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>4. What is the Indonesian word for Sunday?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Sabtu</div>
+                                <div class="quiz-option" data-answer="wrong">b) Jumat</div>
+                                <div class="quiz-option" data-answer="wrong">c) Senin</div>
+                                <div class="quiz-option" data-answer="d">d) Minggu</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>5. How would you say "It's 4 o'clock"?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="a">a) Jam empat</div>
+                                <div class="quiz-option" data-answer="wrong">b) Empat jam</div>
+                                <div class="quiz-option" data-answer="wrong">c) Jam lewat empat</div>
+                                <div class="quiz-option" data-answer="wrong">d) Jam berapa</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <a href="lesson-02.html" class="nav-button secondary">← Previous: Pronouns & Questions</a>
+                    <a href="lesson-04.html" class="nav-button">Next: Verbs & Sentence Structure →</a>
+                </div>
+            </div>
+
+            <div class="lesson-sidebar">
+                <div class="sidebar-section">
+                    <h4>Lesson Topics</h4>
+                    <ul>
+                        <li><a href="#numbers">Numbers 1-100</a></li>
+                        <li><a href="#asking-how-much">Asking "How Much/Many?"</a></li>
+                        <li><a href="#days-week">Days of the Week</a></li>
+                        <li><a href="#telling-time">Telling Time</a></li>
+                        <li><a href="#practical-applications">Practical Applications</a></li>
+                        <li><a href="#vocabulary">Vocabulary List</a></li>
+                        <li><a href="#cultural-note">Cultural Note</a></li>
+                        <li><a href="#quiz">Chapter Quiz</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Quick Reference</h4>
+                    <ul>
+                        <li><a href="https://www.kamus.net/" target="_blank">Indonesian Dictionary</a></li>
+                        <li><a href="https://forvo.com/languages/id/" target="_blank">Pronunciation Guide</a></li>
+                        <li><a href="https://www.indonesianpod101.com/" target="_blank">IndonesianPod101</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Practice</h4>
+                    <ul>
+                        <li><a href="https://www.duolingo.com/course/id/en/Learn-Indonesian" target="_blank">Duolingo Indonesian</a></li>
+                        <li><a href="https://www.lingq.com/en/learn-indonesian-online/" target="_blank">LingQ Indonesian</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bahasa Indonesia Mastery Course. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    
+                    // Remove previous selections
+                    allOptions.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Mark the selected option
+                    if (this.dataset.answer === 'c' || this.dataset.answer === 'd' || this.dataset.answer === 'a') {
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.add('incorrect');
+                    }
+                    
+                    // Mark correct answer
+                    allOptions.forEach(opt => {
+                        if (opt.dataset.answer === 'c' || opt.dataset.answer === 'd' || opt.dataset.answer === 'a') {
+                            opt.classList.add('correct');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

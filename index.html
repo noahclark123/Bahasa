@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Bahasa Indonesia Mastery Course</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#lessons">Lessons</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section id="home" class="hero">
+            <!-- Hero Background Image -->
+            <div class="hero-background">
+                <img src="Indo-Banda-Aceh-Surf-Camp-b-860x500_hi-860x496.jpg" alt="Indonesian surf camp adventure in Banda Aceh" />
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h2>Master Bahasa Indonesia from Zero to Conversational</h2>
+                <p>Learn Indonesian language with our comprehensive course designed for travelers, surfers, and language enthusiasts. Perfect for beginners and intermediate learners.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">9</span>
+                        <span class="stat-label">Chapters</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Vocabulary Words</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">45</span>
+                        <span class="stat-label">Quizzes</span>
+                    </div>
+                </div>
+                
+                <!-- Progress Overview -->
+                <div class="progress-overview" id="progress-overview" style="display: none;">
+                    <div class="progress-card">
+                        <h3>Your Learning Progress</h3>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="overall-progress-bar">
+                                <div class="progress-fill" id="progress-fill"></div>
+                            </div>
+                            <span class="progress-text" id="progress-text">0% Complete</span>
+                        </div>
+                        <div class="achievements-preview" id="achievements-preview">
+                            <span class="achievement-badge">🏆</span>
+                            <span class="achievement-count" id="achievement-count">0 Achievements</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#lessons" class="cta-button">Start Learning</a>
+            </div>
+        </section>
+
+        <section id="lessons" class="lessons">
+            <div class="container">
+                <h2>Course Curriculum</h2>
+                <div class="lessons-grid">
+                    <div class="lesson-card" data-lesson="1">
+                        <div class="lesson-image">
+                            <img src="Surf 1.jpg" alt="Indonesian surf adventure" />
+                        </div>
+                        <div class="lesson-number">01</div>
+                        <div class="lesson-status" id="lesson-status-1">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <h3>Alphabet, Pronunciation & Greetings</h3>
+                        <p>Master the Indonesian alphabet, pronunciation rules, and essential greetings for daily communication.</p>
+                        <ul class="lesson-topics">
+                            <li>Indonesian Alphabet (A-Z)</li>
+                            <li>Pronunciation Guide</li>
+                            <li>Time-based Greetings</li>
+                            <li>Basic Introductions</li>
+                            <li>Politeness & Manners</li>
+                        </ul>
+                        <div class="lesson-progress">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" id="mini-progress-1"></div>
+                            </div>
+                            <span class="mini-progress-text" id="mini-progress-text-1">0%</span>
+                        </div>
+                        <a href="lessons/lesson-01.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card" data-lesson="2">
+                        <div class="lesson-image">
+                            <img src="Surf2.jpeg" alt="Indonesian surf culture" />
+                        </div>
+                        <div class="lesson-number">02</div>
+                        <div class="lesson-status" id="lesson-status-2">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <h3>Pronouns & Simple Questions</h3>
+                        <p>Learn personal pronouns and how to ask basic questions in Indonesian.</p>
+                        <ul class="lesson-topics">
+                            <li>Subject Pronouns (I, You, He/She)</li>
+                            <li>Yes/No Questions</li>
+                            <li>What & Where Questions</li>
+                            <li>Basic Vocabulary</li>
+                            <li>Cultural Notes</li>
+                        </ul>
+                        <div class="lesson-progress">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" id="mini-progress-2"></div>
+                            </div>
+                            <span class="mini-progress-text" id="mini-progress-text-2">0%</span>
+                        </div>
+                        <a href="lessons/lesson-02.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card" data-lesson="3">
+                        <div class="lesson-image">
+                            <img src="nias-wave.jpg" alt="Nias wave surf adventure" />
+                        </div>
+                        <div class="lesson-number">03</div>
+                        <div class="lesson-status" id="lesson-status-3">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <h3>Numbers, Days & Time</h3>
+                        <p>Learn to count, tell time, and discuss days of the week in Indonesian.</p>
+                        <ul class="lesson-topics">
+                            <li>Numbers 1-100</li>
+                            <li>Days of the Week</li>
+                            <li>Telling Time</li>
+                            <li>Asking "How Much/Many?"</li>
+                            <li>Practical Applications</li>
+                        </ul>
+                        <div class="lesson-progress">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" id="mini-progress-3"></div>
+                            </div>
+                            <span class="mini-progress-text" id="mini-progress-text-3">0%</span>
+                        </div>
+                        <a href="lessons/lesson-03.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card" data-lesson="4">
+                        <div class="lesson-image">
+                            <img src="lagundry-bay-barrel.jpg" alt="Lagundry Bay barrel wave" />
+                        </div>
+                        <div class="lesson-number">04</div>
+                        <div class="lesson-status" id="lesson-status-4">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <h3>Verbs & Sentence Structure</h3>
+                        <p>Master basic verbs and learn how to form proper Indonesian sentences.</p>
+                        <ul class="lesson-topics">
+                            <li>Subject-Predicate-Object Structure</li>
+                            <li>Common Verbs</li>
+                            <li>Negation (Tidak vs Bukan)</li>
+                            <li>Ordering Food & Drinks</li>
+                            <li>Making Plans</li>
+                        </ul>
+                        <div class="lesson-progress">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" id="mini-progress-4"></div>
+                            </div>
+                            <span class="mini-progress-text" id="mini-progress-text-4">0%</span>
+                        </div>
+                        <a href="lessons/lesson-04.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card" data-lesson="5">
+                        <div class="lesson-image">
+                            <img src="20201231083609_bill.jpg" alt="Indonesian surf community and family" />
+                        </div>
+                        <div class="lesson-number">05</div>
+                        <div class="lesson-status" id="lesson-status-5">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <h3>Adjectives & Family</h3>
+                        <p>Learn to describe things and people, and talk about family relationships.</p>
+                        <ul class="lesson-topics">
+                            <li>Common Adjectives</li>
+                            <li>Adjective Placement Rules</li>
+                            <li>Family Vocabulary</li>
+                            <li>Possession</li>
+                            <li>Describing Experiences</li>
+                        </ul>
+                        <div class="lesson-progress">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" id="mini-progress-5"></div>
+                            </div>
+                            <span class="mini-progress-text" id="mini-progress-text-5">0%</span>
+                        </div>
+                        <a href="lessons/lesson-05.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card" data-lesson="6">
+                        <div class="lesson-image">
+                            <img src="Surf 1.jpg" alt="Indonesian travel and transportation" />
+                        </div>
+                        <div class="lesson-number">06</div>
+                        <div class="lesson-status" id="lesson-status-6">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <div class="lesson-progress" id="lesson-progress-6">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="mini-progress-text">0%</span>
+                        </div>
+                        <h3>Lesson 6: Travel & Transportation</h3>
+                        <p>Master essential phrases for getting around Indonesia like a local.</p>
+                        <ul class="lesson-topics">
+                            <li>Transportation basics</li>
+                            <li>Taxi & ojek phrases</li>
+                            <li>Asking directions</li>
+                            <li>Accommodation</li>
+                        </ul>
+                        <a href="lessons/lesson-06.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card" data-lesson="7">
+                        <div class="lesson-image">
+                            <img src="Surf2.jpeg" alt="Indonesian shopping and market culture" />
+                        </div>
+                        <div class="lesson-number">07</div>
+                        <div class="lesson-status" id="lesson-status-7">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <div class="lesson-progress" id="lesson-progress-7">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="mini-progress-text">0%</span>
+                        </div>
+                        <h3>Lesson 7: Shopping & Negotiation</h3>
+                        <p>Master the art of shopping and bargaining in Indonesian markets.</p>
+                        <ul class="lesson-topics">
+                            <li>Basic shopping phrases</li>
+                            <li>Negotiation tactics</li>
+                            <li>Market-specific phrases</li>
+                            <li>Payment methods</li>
+                        </ul>
+                        <a href="lessons/lesson-07.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card" data-lesson="8">
+                        <div class="lesson-image">
+                            <img src="nias-wave.jpg" alt="Emergency and health situations in Indonesia" />
+                        </div>
+                        <div class="lesson-number">08</div>
+                        <div class="lesson-status" id="lesson-status-8">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <div class="lesson-progress" id="lesson-progress-8">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="mini-progress-text">0%</span>
+                        </div>
+                        <h3>Lesson 8: Emergency & Health</h3>
+                        <p>Essential phrases for emergencies and medical situations.</p>
+                        <ul class="lesson-topics">
+                            <li>Emergency basics</li>
+                            <li>Medical emergencies</li>
+                            <li>Describing symptoms</li>
+                            <li>Pharmacy & medicine</li>
+                        </ul>
+                        <a href="lessons/lesson-08.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                    <div class="lesson-card" data-lesson="9">
+                        <div class="lesson-image">
+                            <img src="20201231083609_bill.jpg" alt="Indonesian social and cultural interactions" />
+                        </div>
+                        <div class="lesson-number">09</div>
+                        <div class="lesson-status" id="lesson-status-9">
+                            <span class="status-icon">📚</span>
+                            <span class="status-text">Not Started</span>
+                        </div>
+                        <div class="lesson-progress" id="lesson-progress-9">
+                            <div class="mini-progress-bar">
+                                <div class="mini-progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="mini-progress-text">0%</span>
+                        </div>
+                        <h3>Lesson 9: Social & Cultural</h3>
+                        <p>Master social interactions and cultural nuances in Indonesian society.</p>
+                        <ul class="lesson-topics">
+                            <li>Advanced social greetings</li>
+                            <li>Cultural respect & etiquette</li>
+                            <li>Surf culture & community</li>
+                            <li>Building local connections</li>
+                        </ul>
+                        <a href="lessons/lesson-09.html" class="lesson-link">Start Lesson</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="resources">
+            <div class="container">
+                <h2>Learning Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="2064.avif" alt="Indonesian language learning resources" />
+                        </div>
+                        <h3>📚 Language Resources</h3>
+                        <ul>
+                            <li><a href="https://www.kamus.net/" target="_blank">Kamus.net - Indonesian Dictionary</a></li>
+                            <li><a href="https://www.indonesianpod101.com/" target="_blank">IndonesianPod101</a></li>
+                            <li><a href="https://www.duolingo.com/course/id/en/Learn-Indonesian" target="_blank">Duolingo Indonesian</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="videoframe_75288.png" alt="Indonesian audio and pronunciation resources" />
+                        </div>
+                        <h3>🎧 Audio & Pronunciation</h3>
+                        <ul>
+                            <li><a href="https://forvo.com/languages/id/" target="_blank">Forvo - Indonesian Pronunciation</a></li>
+                            <li><a href="https://www.youtube.com/c/IndonesianPod101" target="_blank">YouTube Indonesian Lessons</a></li>
+                            <li><a href="https://www.lingq.com/en/learn-indonesian-online/" target="_blank">LingQ Indonesian</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="nias-wave.jpg" alt="Indonesian cultural and travel experiences" />
+                        </div>
+                        <h3>🌏 Cultural & Travel</h3>
+                        <ul>
+                            <li><a href="https://www.lonelyplanet.com/indonesia" target="_blank">Lonely Planet Indonesia</a></li>
+                            <li><a href="https://www.balitravel.com/" target="_blank">Bali Travel Guide</a></li>
+                            <li><a href="https://www.surfingindonesia.com/" target="_blank">Surfing Indonesia</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <p>Have questions about learning Bahasa Indonesia? Need help with pronunciation or cultural tips? We're here to help!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Email:</strong> bahasa@example.com
+                    </div>
+                    <div class="contact-item">
+                        <strong>Community:</strong> <a href="https://github.com/yourusername" target="_blank">Join our learning community</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bahasa Indonesia Mastery Course. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

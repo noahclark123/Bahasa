@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7: Shopping & Negotiation - Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .lesson-header {
+            position: relative;
+            margin-bottom: 3rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-header-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .lesson-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        
+        .lesson-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(249, 115, 22, 0.5));
+            z-index: 1;
+        }
+        
+        .lesson-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .lesson-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lesson-header-content p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .lesson-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .lesson-main {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .lesson-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .sidebar-section {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .sidebar-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .sidebar-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-section li {
+            margin-bottom: 0.5rem;
+        }
+        .sidebar-section a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .sidebar-section a:hover {
+            color: var(--primary-color);
+        }
+        .phrase-bank {
+            background: var(--accent-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .phrase-bank h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .phrase-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .phrase-item:last-child {
+            border-bottom: none;
+        }
+        .indonesian {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        .english {
+            color: var(--text-color);
+            font-style: italic;
+        }
+        .pronunciation {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: 'Courier New', monospace;
+        }
+        .quiz-container {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+        }
+        .quiz-question {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--accent-bg);
+            border-radius: var(--radius-lg);
+        }
+        .quiz-question h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.75rem;
+        }
+        .quiz-option {
+            padding: 1rem;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--accent-bg);
+        }
+        .quiz-option.correct {
+            border-color: var(--success-color);
+            background: var(--success-bg);
+        }
+        .quiz-option.incorrect {
+            border-color: var(--error-color);
+            background: var(--error-bg);
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .quiz-feedback.correct {
+            background: var(--success-bg);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+        .quiz-feedback.incorrect {
+            background: var(--error-bg);
+            color: var(--error-color);
+            border: 1px solid var(--error-color);
+        }
+        .cultural-note {
+            background: var(--accent-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .cultural-image {
+            width: 100%;
+            height: 200px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .cultural-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .lesson-content {
+                grid-template-columns: 1fr;
+            }
+            .lesson-header-content h1 {
+                font-size: 2rem;
+            }
+            .lesson-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Bahasa Indonesia Mastery Course</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#lessons">Lessons</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lesson-container">
+        <div class="lesson-header">
+            <div class="lesson-header-image">
+                <img src="../Surf2.jpeg" alt="Indonesian shopping and market culture" />
+                <div class="lesson-header-overlay"></div>
+            </div>
+            <div class="lesson-header-content">
+                <h1>Lesson 7: Shopping & Negotiation</h1>
+                <p>Master the art of shopping and bargaining in Indonesian markets.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="lesson-main">
+                <section id="basic-shopping">
+                    <h2>Basic Shopping Phrases</h2>
+                    <div class="phrase-bank">
+                        <h3>🛍️ Essential Shopping</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Berapa harganya?</div>
+                                <div class="pronunciation">ber-ah-pah har-gah-nyah</div>
+                            </div>
+                            <div class="english">How much is it?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bisa kurang?</div>
+                                <div class="pronunciation">bee-sah koo-rang</div>
+                            </div>
+                            <div class="english">Can you reduce the price?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Terlalu mahal</div>
+                                <div class="pronunciation">ter-lah-loo mah-hal</div>
+                            </div>
+                            <div class="english">Too expensive</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Saya cuma punya...</div>
+                                <div class="pronunciation">sah-yah choo-mah poo-nyah</div>
+                            </div>
+                            <div class="english">I only have...</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="negotiation-tactics">
+                    <h2>Negotiation Tactics</h2>
+                    <div class="phrase-bank">
+                        <h3>💬 Bargaining Phrases</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bagaimana kalau...?</div>
+                                <div class="pronunciation">ba-gai-mah-nah kah-lah-oo</div>
+                            </div>
+                            <div class="english">How about...?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Kalau beli banyak, bisa murah?</div>
+                                <div class="pronunciation">kah-lah-oo beh-lee bah-nyah, bee-sah moo-rah</div>
+                            </div>
+                            <div class="english">If I buy many, can it be cheaper?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Teman saya bilang harganya...</div>
+                                <div class="pronunciation">teh-man sah-yah bee-lang har-gah-nyah</div>
+                            </div>
+                            <div class="english">My friend said the price is...</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Saya turis, kasihan</div>
+                                <div class="pronunciation">sah-yah too-rees, kah-see-han</div>
+                            </div>
+                            <div class="english">I'm a tourist, have pity</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="market-specific">
+                    <h2>Market-Specific Phrases</h2>
+                    <div class="phrase-bank">
+                        <h3>🏪 Market Shopping</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Ini segar tidak?</div>
+                                <div class="pronunciation">ee-nee seh-gar tee-dak</div>
+                            </div>
+                            <div class="english">Is this fresh?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bisa cicil?</div>
+                                <div class="pronunciation">bee-sah chee-cheel</div>
+                            </div>
+                            <div class="english">Can I pay in installments?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Ada garansi?</div>
+                                <div class="pronunciation">ah-dah gah-ran-see</div>
+                            </div>
+                            <div class="english">Is there a warranty?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bisa tukar jika rusak?</div>
+                                <div class="pronunciation">bee-sah too-kar jee-kah roo-sak</div>
+                            </div>
+                            <div class="english">Can I exchange if it's broken?</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="payment-methods">
+                    <h2>Payment & Transactions</h2>
+                    <div class="phrase-bank">
+                        <h3>💳 Payment Phrases</h3>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Terima kartu kredit?</div>
+                                <div class="pronunciation">ter-ee-mah kar-too kreh-deet</div>
+                            </div>
+                            <div class="english">Do you accept credit cards?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Bisa bayar pakai GoPay?</div>
+                                <div class="pronunciation">bee-sah bah-yar pah-kai goh-pay</div>
+                            </div>
+                            <div class="english">Can I pay with GoPay?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Ada kembalian?</div>
+                                <div class="pronunciation">ah-dah kem-bah-lee-an</div>
+                            </div>
+                            <div class="english">Do you have change?</div>
+                        </div>
+                        <div class="phrase-item">
+                            <div>
+                                <div class="indonesian">Tolong buatkan struk</div>
+                                <div class="pronunciation">toh-long boo-at-kan strook</div>
+                            </div>
+                            <div class="english">Please make a receipt</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cultural-note">
+                    <h2>Cultural Note</h2>
+                    <div class="cultural-note">
+                        <div class="cultural-image">
+                            <img src="../lagundry-bay-barrel.jpg" alt="Indonesian market culture" />
+                        </div>
+                        <h3>The Art of Indonesian Bargaining</h3>
+                        <p>Bargaining is not just expected in Indonesian markets - it's a social ritual that builds relationships. Starting prices are often inflated by 30-50%, so don't be afraid to negotiate!</p>
+                        <p>Key strategies: Always smile and be friendly, start at about 50% of the asking price, mention you're a regular customer or tourist, and be prepared to walk away. The seller will often call you back with a better offer.</p>
+                        <p>In surf areas, bargaining for surfboard repairs, boat trips, and accommodation is common. Local surfers often get better deals, so mentioning your surf connection can help. Remember: it's about the relationship, not just the price.</p>
+                    </div>
+                </section>
+
+                <section id="quiz">
+                    <h2>Chapter 7 Quiz</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h4>Question 1: How do you ask "How much is it?"</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="correct">Berapa harganya?</div>
+                                <div class="quiz-option" data-answer="incorrect">Bisa kurang?</div>
+                                <div class="quiz-option" data-answer="incorrect">Terlalu mahal</div>
+                                <div class="quiz-option" data-answer="incorrect">Bagaimana kalau...?</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Berapa harganya?" means "How much is it?"</div>
+                            <div class="quiz-feedback incorrect">Incorrect. The correct answer is "Berapa harganya?"</div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>Question 2: What does "Bisa kurang?" mean?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="incorrect">Too expensive</div>
+                                <div class="quiz-option" data-answer="correct">Can you reduce the price?</div>
+                                <div class="quiz-option" data-answer="incorrect">I only have...</div>
+                                <div class="quiz-option" data-answer="incorrect">How about...?</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Bisa kurang?" asks to reduce the price.</div>
+                            <div class="quiz-feedback incorrect">Incorrect. "Bisa kurang?" means "Can you reduce the price?"</div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>Question 3: How do you ask if something is fresh?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="correct">Ini segar tidak?</div>
+                                <div class="quiz-option" data-answer="incorrect">Ada garansi?</div>
+                                <div class="quiz-option" data-answer="incorrect">Bisa cicil?</div>
+                                <div class="quiz-option" data-answer="incorrect">Bisa tukar jika rusak?</div>
+                            </div>
+                            <div class="quiz-feedback correct">Correct! "Ini segar tidak?" means "Is this fresh?"</div>
+                            <div class="quiz-feedback incorrect">Incorrect. "Ini segar tidak?" means "Is this fresh?"</div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <a href="lesson-06.html" class="nav-button secondary">← Previous: Travel & Transportation</a>
+                    <a href="lesson-08.html" class="nav-button">Next: Emergency & Health →</a>
+                    <a href="../index.html" class="nav-button secondary">🏠 Back to Course Overview</a>
+                </div>
+            </div>
+
+            <div class="lesson-sidebar">
+                <div class="sidebar-section">
+                    <h3>Lesson Navigation</h3>
+                    <ul>
+                        <li><a href="#basic-shopping">Basic Shopping</a></li>
+                        <li><a href="#negotiation-tactics">Negotiation Tactics</a></li>
+                        <li><a href="#market-specific">Market Phrases</a></li>
+                        <li><a href="#payment-methods">Payment Methods</a></li>
+                        <li><a href="#cultural-note">Cultural Note</a></li>
+                        <li><a href="#quiz">Chapter Quiz</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Bargaining Tips</h3>
+                    <ul>
+                        <li>Start at 50% of asking price</li>
+                        <li>Always smile and be friendly</li>
+                        <li>Mention you're a tourist</li>
+                        <li>Be prepared to walk away</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    const feedback = question.querySelectorAll('.quiz-feedback');
+                    
+                    // Remove previous selections
+                    allOptions.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Hide all feedback
+                    feedback.forEach(fb => fb.style.display = 'none');
+                    
+                    // Show selected answer
+                    if (this.dataset.answer === 'correct') {
+                        this.classList.add('correct');
+                        question.querySelector('.quiz-feedback.correct').style.display = 'block';
+                    } else {
+                        this.classList.add('incorrect');
+                        question.querySelector('.quiz-feedback.incorrect').style.display = 'block';
+                        // Show correct answer
+                        const correctOption = question.querySelector('.quiz-option[data-answer="correct"]');
+                        correctOption.classList.add('correct');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

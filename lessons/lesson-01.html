@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Alphabet, Pronunciation & Greetings - Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .lesson-header {
+            position: relative;
+            margin-bottom: 3rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-header-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .lesson-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        
+        .lesson-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(249, 115, 22, 0.5));
+            z-index: 1;
+        }
+        
+        .lesson-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .lesson-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lesson-header-content p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .lesson-content {
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .lesson-main {
+            background: var(--bg-primary);
+        }
+        .lesson-sidebar {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .pronunciation-guide {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+        .letter-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 0.75rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .letter-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+        .letter {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+        .word {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .pronunciation {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .greeting-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .indonesian-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .english-text {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .pronunciation-text {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .quiz-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.5rem;
+        }
+        .quiz-option {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-secondary);
+        }
+        .quiz-option.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .nav-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .nav-button.secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+        .nav-button.secondary:hover {
+            background: var(--border-color);
+        }
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        .sidebar-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .sidebar-section ul {
+            list-style: none;
+        }
+        .sidebar-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .sidebar-section li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-section a {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .sidebar-section a:hover {
+            color: var(--primary-color);
+        }
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .vocabulary-table th,
+        .vocabulary-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .vocabulary-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        .vocabulary-table tr:hover {
+            background: var(--bg-secondary);
+        }
+        @media (max-width: 768px) {
+            .lesson-content {
+                grid-template-columns: 1fr;
+            }
+            .lesson-sidebar {
+                position: static;
+            }
+            .alphabet-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+        
+        .cultural-image {
+            width: 100%;
+            height: 250px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cultural-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9) contrast(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Bahasa Indonesia Course</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#lessons">Lessons</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lesson-container">
+        <div class="lesson-header">
+            <div class="lesson-header-image">
+                <img src="../Surf 1.jpg" alt="Indonesian surf adventure" />
+                <div class="lesson-header-overlay"></div>
+            </div>
+            <div class="lesson-header-content">
+                <h1>Lesson 1: Alphabet, Pronunciation & Greetings</h1>
+                <p>Master the Indonesian alphabet, pronunciation rules, and essential greetings for daily communication.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="lesson-main">
+                <section id="alphabet">
+                    <h2>The Indonesian Alphabet</h2>
+                    <p>Indonesian uses the Latin alphabet (A-Z) just like English, but with some important pronunciation differences. The good news is that Indonesian is phonetic - words are pronounced exactly as they're spelled!</p>
+                    
+                    <div class="pronunciation-guide">
+                        <h3>Key Pronunciation Rules</h3>
+                        <ul>
+                            <li><strong>C</strong> is always pronounced like 'ch' in "chair"</li>
+                            <li><strong>E</strong> has two sounds: like 'e' in "bed" OR like 'a' in "ago"</li>
+                            <li><strong>Q</strong> is pronounced 'k' (rare, used for foreign words)</li>
+                            <li><strong>R</strong> is rolled or tapped like in Spanish</li>
+                            <li><strong>V</strong> is pronounced 'f' (used for foreign words)</li>
+                    </ul>
+                    </div>
+
+                    <div class="alphabet-grid">
+                        <div class="letter-card">
+                            <div class="letter">A</div>
+                            <div class="word">antik (beautiful)</div>
+                            <div class="pronunciation">ah</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">B</div>
+                            <div class="word">buku (book)</div>
+                            <div class="pronunciation">buh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">C</div>
+                            <div class="word">cantik (beautiful)</div>
+                            <div class="pronunciation">ch</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">D</div>
+                            <div class="word">dua (two)</div>
+                            <div class="pronunciation">duh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">E</div>
+                            <div class="word">enak (delicious)</div>
+                            <div class="pronunciation">eh/uh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">F</div>
+                            <div class="word">foto (photo)</div>
+                            <div class="pronunciation">fuh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">G</div>
+                            <div class="word">gajah (elephant)</div>
+                            <div class="pronunciation">guh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">H</div>
+                            <div class="word">hari (day)</div>
+                            <div class="pronunciation">huh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">I</div>
+                            <div class="word">ikan (fish)</div>
+                            <div class="pronunciation">ee</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">J</div>
+                            <div class="word">jalan (street)</div>
+                            <div class="pronunciation">juh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">K</div>
+                            <div class="word">kopi (coffee)</div>
+                            <div class="pronunciation">kuh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">L</div>
+                            <div class="word">lima (five)</div>
+                            <div class="pronunciation">luh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">M</div>
+                            <div class="word">makan (to eat)</div>
+                            <div class="pronunciation">muh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">N</div>
+                            <div class="word">nama (name)</div>
+                            <div class="pronunciation">nuh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">O</div>
+                            <div class="word">orang (person)</div>
+                            <div class="pronunciation">oh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">P</div>
+                            <div class="word">pagi (morning)</div>
+                            <div class="pronunciation">puh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">Q</div>
+                            <div class="word">Al-Qur'an</div>
+                            <div class="pronunciation">k</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">R</div>
+                            <div class="word">rumah (house)</div>
+                            <div class="pronunciation">rolled r</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">S</div>
+                            <div class="word">satu (one)</div>
+                            <div class="pronunciation">suh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">T</div>
+                            <div class="word">tiga (three)</div>
+                            <div class="pronunciation">tuh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">U</div>
+                            <div class="word">uang (money)</div>
+                            <div class="pronunciation">oo</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">V</div>
+                            <div class="word">video (video)</div>
+                            <div class="pronunciation">f</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">W</div>
+                            <div class="word">wanita (woman)</div>
+                            <div class="pronunciation">wuh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">X</div>
+                            <div class="word">xenon</div>
+                            <div class="pronunciation">ks</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">Y</div>
+                            <div class="word">ya (yes)</div>
+                            <div class="pronunciation">yuh</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">Z</div>
+                            <div class="word">zebra</div>
+                            <div class="pronunciation">zuh</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="greetings">
+                    <h2>Essential Greetings</h2>
+                    <p>Greetings in Indonesia often depend on the time of day. Here are the most important ones:</p>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Selamat pagi</div>
+                        <div class="english-text">Good morning (from sunrise until ~11 am)</div>
+                        <div class="pronunciation-text">suh-lah-mat pah-gee</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Selamat siang</div>
+                        <div class="english-text">Good day (from ~11 am until ~3 pm)</div>
+                        <div class="pronunciation-text">suh-lah-mat see-ahng</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Selamat sore</div>
+                        <div class="english-text">Good afternoon/evening (from ~3 pm until sunset)</div>
+                        <div class="pronunciation-text">suh-lah-mat sor-ay</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Selamat malam</div>
+                        <div class="english-text">Good night (after sunset)</div>
+                        <div class="pronunciation-text">suh-lah-mat mah-lahm</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Apa kabar?</div>
+                        <div class="english-text">How are you?</div>
+                        <div class="pronunciation-text">ah-pah kah-bar</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Kabar baik</div>
+                        <div class="english-text">I'm well (Literally: "good news")</div>
+                        <div class="pronunciation-text">kah-bar bah-eek</div>
+                    </div>
+                </section>
+
+                <section id="introductions">
+                    <h2>Basic Introductions</h2>
+                    <p>Learn how to introduce yourself and ask for someone's name:</p>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Siapa nama Anda?</div>
+                        <div class="english-text">What is your name? (Formal)</div>
+                        <div class="pronunciation-text">see-ah-pah nah-mah an-dah</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Nama saya [Your Name]</div>
+                        <div class="english-text">My name is [Your Name]</div>
+                        <div class="pronunciation-text">nah-mah sah-yah [Your Name]</div>
+                    </div>
+                </section>
+
+                <section id="politeness">
+                    <h2>Politeness and Basic Manners</h2>
+                    <p>These words will get you far in Indonesian culture:</p>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Terima kasih</div>
+                        <div class="english-text">Thank you</div>
+                        <div class="pronunciation-text">te-ree-mah kah-seeh</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Sama-sama</div>
+                        <div class="english-text">You're welcome</div>
+                        <div class="pronunciation-text">sah-mah sah-mah</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Maaf</div>
+                        <div class="english-text">Sorry</div>
+                        <div class="pronunciation-text">mah-ahf</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Permisi</div>
+                        <div class="english-text">Excuse me (to get past someone or get attention)</div>
+                        <div class="pronunciation-text">per-mee-see</div>
+                    </div>
+                </section>
+
+                <section id="travel-greetings">
+                    <h2>Travel & Surf Greetings</h2>
+                    <p>Special phrases for travelers and surfers:</p>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Om Swastiastu</div>
+                        <div class="english-text">Traditional Balinese Hindu greeting (use in Bali instead of "Selamat Pagi/Siang")</div>
+                        <div class="pronunciation-text">Ohm Swah-stee-ah-stoo</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Dari mana?</div>
+                        <div class="english-text">Where are you from?</div>
+                        <div class="pronunciation-text">dah-ree mah-nah</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Saya dari [Your Country]</div>
+                        <div class="english-text">I am from [Your Country]</div>
+                        <div class="pronunciation-text">sah-yah dah-ree [Your Country]</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Mau ke mana?</div>
+                        <div class="english-text">Where are you going?</div>
+                        <div class="pronunciation-text">ma-oo kuh mah-nah</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Saya mau ke pantai</div>
+                        <div class="english-text">I want to go to the beach</div>
+                        <div class="pronunciation-text">sah-yah ma-oo kuh pan-thai</div>
+                    </div>
+
+                    <div class="greeting-card">
+                        <div class="indonesian-text">Ombaknya bagus?</div>
+                        <div class="english-text">Are the waves good?</div>
+                        <div class="pronunciation-text">ohm-bak-nyah bah-goos</div>
+                    </div>
+                </section>
+
+                <section id="vocabulary">
+                    <h2>Chapter 1 Vocabulary</h2>
+                    <table class="vocabulary-table">
+                        <thead>
+                            <tr>
+                                <th>Indonesian Word</th>
+                                <th>English Translation</th>
+                                <th>Pronunciation Guide</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Selamat pagi</td>
+                                <td>Good morning</td>
+                                <td>suh-lah-mat pah-gee</td>
+                            </tr>
+                            <tr>
+                                <td>Selamat siang</td>
+                                <td>Good day</td>
+                                <td>suh-lah-mat see-ahng</td>
+                            </tr>
+                            <tr>
+                                <td>Selamat sore</td>
+                                <td>Good afternoon</td>
+                                <td>suh-lah-mat sor-ay</td>
+                            </tr>
+                            <tr>
+                                <td>Selamat malam</td>
+                                <td>Good night</td>
+                                <td>suh-lah-mat mah-lahm</td>
+                            </tr>
+                            <tr>
+                                <td>Apa kabar?</td>
+                                <td>How are you?</td>
+                                <td>ah-pah kah-bar</td>
+                            </tr>
+                            <tr>
+                                <td>Kabar baik</td>
+                                <td>I'm well / Good news</td>
+                                <td>kah-bar bah-eek</td>
+                            </tr>
+                            <tr>
+                                <td>Siapa</td>
+                                <td>Who</td>
+                                <td>see-ah-pah</td>
+                            </tr>
+                            <tr>
+                                <td>Nama</td>
+                                <td>Name</td>
+                                <td>nah-mah</td>
+                            </tr>
+                            <tr>
+                                <td>Saya</td>
+                                <td>I / My</td>
+                                <td>sah-yah</td>
+                            </tr>
+                            <tr>
+                                <td>Anda</td>
+                                <td>You (formal)</td>
+                                <td>an-dah</td>
+                            </tr>
+                            <tr>
+                                <td>Terima kasih</td>
+                                <td>Thank you</td>
+                                <td>te-ree-mah kah-seeh</td>
+                            </tr>
+                            <tr>
+                                <td>Sama-sama</td>
+                                <td>You're welcome</td>
+                                <td>sah-mah sah-mah</td>
+                            </tr>
+                            <tr>
+                                <td>Maaf</td>
+                                <td>Sorry</td>
+                                <td>mah-ahf</td>
+                            </tr>
+                            <tr>
+                                <td>Permisi</td>
+                                <td>Excuse me</td>
+                                <td>per-mee-see</td>
+                            </tr>
+                            <tr>
+                                <td>Ombak</td>
+                                <td>Wave</td>
+                                <td>ohm-bak</td>
+                            </tr>
+                            <tr>
+                                <td>Pantai</td>
+                                <td>Beach</td>
+                                <td>pan-thai</td>
+                            </tr>
+                            <tr>
+                                <td>Bagus</td>
+                                <td>Good / Nice</td>
+                                <td>bah-goos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="cultural-note">
+                    <h2>Cultural Note</h2>
+                    <div class="cultural-note">
+                        <div class="cultural-image">
+                            <img src="../nias-the-point.jpg" alt="Nias Point - legendary Indonesian surf break" />
+                        </div>
+                        <h3>The Spirit of Indonesian Surf Culture</h3>
+                        <p>In Indonesia, a smile goes a long way. People are generally very friendly and polite. When greeting someone, especially someone older, a slight nod of the head is a sign of respect.</p>
+                        <p>Don't be surprised if people you've just met ask you personal questions like "Are you married?" or "Where are you going?"—it's a common way to be friendly and make conversation, not to be nosy!</p>
+                        <p>In surf areas like Bali, using the local greeting "Om Swastiastu" shows great respect for the local culture. Places like Nias Point (pictured above) have been legendary surf destinations since the 1980s, where surfers discovered perfect waves and warm hospitality.</p>
+                    </div>
+                </section>
+
+                <section id="quiz">
+                    <h2>Chapter 1 Quiz</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h4>1. How is the letter 'C' in Indonesian always pronounced?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="c">a) Like 'ch' in "chair"</div>
+                                <div class="quiz-option" data-answer="wrong">b) Like 'k' in "cat"</div>
+                                <div class="quiz-option" data-answer="wrong">c) Like 's' in "sun"</div>
+                                <div class="quiz-option" data-answer="wrong">d) Like 'j' in "jam"</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>2. What is the correct greeting for 9:00 AM?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Selamat siang</div>
+                                <div class="quiz-option" data-answer="b">b) Selamat pagi</div>
+                                <div class="quiz-option" data-answer="wrong">c) Selamat malam</div>
+                                <div class="quiz-option" data-answer="wrong">d) Selamat sore</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>3. What is the most common way to respond to "Apa kabar?"</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Nama saya...</div>
+                                <div class="quiz-option" data-answer="wrong">b) Sama-sama</div>
+                                <div class="quiz-option" data-answer="c">c) Kabar baik</div>
+                                <div class="quiz-option" data-answer="wrong">d) Terima kasih</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>4. How do you say "Thank you" in Indonesian?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Maaf</div>
+                                <div class="quiz-option" data-answer="wrong">b) Permisi</div>
+                                <div class="quiz-option" data-answer="wrong">c) Sama-sama</div>
+                                <div class="quiz-option" data-answer="d">d) Terima kasih</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>5. If someone says "Terima kasih" to you, what is the appropriate response?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="a">a) Sama-sama</div>
+                                <div class="quiz-option" data-answer="wrong">b) Selamat pagi</div>
+                                <div class="quiz-option" data-answer="wrong">c) Maaf</div>
+                                <div class="quiz-option" data-answer="wrong">d) Apa kabar?</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <a href="../index.html" class="nav-button secondary">← Back to Course</a>
+                    <a href="lesson-02.html" class="nav-button">Next: Pronouns & Questions →</a>
+                </div>
+            </div>
+
+            <div class="lesson-sidebar">
+                <div class="sidebar-section">
+                    <h4>Lesson Topics</h4>
+                    <ul>
+                        <li><a href="#alphabet">Indonesian Alphabet</a></li>
+                        <li><a href="#greetings">Essential Greetings</a></li>
+                        <li><a href="#introductions">Basic Introductions</a></li>
+                        <li><a href="#politeness">Politeness & Manners</a></li>
+                        <li><a href="#travel-greetings">Travel & Surf Greetings</a></li>
+                        <li><a href="#vocabulary">Vocabulary List</a></li>
+                        <li><a href="#cultural-note">Cultural Note</a></li>
+                        <li><a href="#quiz">Chapter Quiz</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Quick Reference</h4>
+                    <ul>
+                        <li><a href="https://www.kamus.net/" target="_blank">Indonesian Dictionary</a></li>
+                        <li><a href="https://forvo.com/languages/id/" target="_blank">Pronunciation Guide</a></li>
+                        <li><a href="https://www.indonesianpod101.com/" target="_blank">IndonesianPod101</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Practice</h4>
+                    <ul>
+                        <li><a href="https://www.duolingo.com/course/id/en/Learn-Indonesian" target="_blank">Duolingo Indonesian</a></li>
+                        <li><a href="https://www.lingq.com/en/learn-indonesian-online/" target="_blank">LingQ Indonesian</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bahasa Indonesia Mastery Course. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    
+                    // Remove previous selections
+                    allOptions.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Mark the selected option
+                    if (this.dataset.answer === this.dataset.answer) {
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.add('incorrect');
+                    }
+                    
+                    // Mark correct answer
+                    allOptions.forEach(opt => {
+                        if (opt.dataset.answer === 'a' || opt.dataset.answer === 'b' || opt.dataset.answer === 'c' || opt.dataset.answer === 'd') {
+                            opt.classList.add('correct');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5: Adjectives & Family - Bahasa Indonesia Course</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .lesson-header {
+            position: relative;
+            margin-bottom: 3rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .lesson-header-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .lesson-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        
+        .lesson-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.7), rgba(249, 115, 22, 0.5));
+            z-index: 1;
+        }
+        
+        .lesson-header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .lesson-header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lesson-header-content p {
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .lesson-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .lesson-main {
+            background: var(--bg-primary);
+        }
+        .lesson-sidebar {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .adjective-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .adjective-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            transition: all 0.2s ease;
+        }
+        .adjective-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+        .adjective-indonesian {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .adjective-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .adjective-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .placement-rule {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .example-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .example-indonesian {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .example-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .example-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .family-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .family-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .family-indonesian {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .family-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .family-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .possession-example {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        .possession-indonesian {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .possession-english {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .possession-pronunciation {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        .quiz-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        .quiz-options {
+            display: grid;
+            gap: 0.5rem;
+        }
+        .quiz-option {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-secondary);
+        }
+        .quiz-option.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .nav-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .nav-button.secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+        .nav-button.secondary:hover {
+            background: var(--border-color);
+        }
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        .sidebar-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .sidebar-section ul {
+            list-style: none;
+        }
+        .sidebar-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .sidebar-section li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-section a {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .sidebar-section a:hover {
+            color: var(--primary-color);
+        }
+        .vocabulary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--bg-primary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .vocabulary-table th,
+        .vocabulary-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .vocabulary-table th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        .vocabulary-table tr:hover {
+            background: var(--bg-secondary);
+        }
+        .cultural-note {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .experience-examples {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        @media (max-width: 768px) {
+            .lesson-content {
+                grid-template-columns: 1fr;
+            }
+            .lesson-sidebar {
+                position: static;
+            }
+            .adjective-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            .family-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Bahasa Indonesia Course</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#lessons">Lessons</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="lesson-container">
+        <div class="lesson-header">
+            <div class="lesson-header-image">
+                <img src="../20201231083609_bill.jpg" alt="Indonesian surf community and family" />
+                <div class="lesson-header-overlay"></div>
+            </div>
+            <div class="lesson-header-content">
+                <h1>Lesson 5: Adjectives & Family</h1>
+                <p>Learn to describe things and people, and talk about family relationships.</p>
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="lesson-main">
+                <section id="common-adjectives">
+                    <h2>Common Adjectives</h2>
+                    <p>Adjectives allow you to add detail and color to your sentences.</p>
+
+                    <div class="adjective-grid">
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Besar</div>
+                            <div class="adjective-english">Big</div>
+                            <div class="adjective-pronunciation">buh-sar</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Kecil</div>
+                            <div class="adjective-english">Small</div>
+                            <div class="adjective-pronunciation">kuh-cheel</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Baik</div>
+                            <div class="adjective-english">Good / Kind</div>
+                            <div class="adjective-pronunciation">bah-eek</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Panas</div>
+                            <div class="adjective-english">Hot</div>
+                            <div class="adjective-pronunciation">pah-nahs</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Dingin</div>
+                            <div class="adjective-english">Cold</div>
+                            <div class="adjective-pronunciation">ding-in</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Enak</div>
+                            <div class="adjective-english">Delicious</div>
+                            <div class="adjective-pronunciation">eh-nak</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Cantik</div>
+                            <div class="adjective-english">Beautiful (for people/things)</div>
+                            <div class="adjective-pronunciation">chan-tik</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Ganteng</div>
+                            <div class="adjective-english">Handsome (for men)</div>
+                            <div class="adjective-pronunciation">gan-teng</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Bagus</div>
+                            <div class="adjective-english">Good / Nice (for things/quality)</div>
+                            <div class="adjective-pronunciation">bah-goos</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Mahal</div>
+                            <div class="adjective-english">Expensive</div>
+                            <div class="adjective-pronunciation">mah-hal</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Murah</div>
+                            <div class="adjective-english">Cheap</div>
+                            <div class="adjective-pronunciation">moo-rah</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Ramai</div>
+                            <div class="adjective-english">Crowded</div>
+                            <div class="adjective-pronunciation">rah-my</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Sepi</div>
+                            <div class="adjective-english">Quiet, empty</div>
+                            <div class="adjective-pronunciation">suh-pee</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Aman</div>
+                            <div class="adjective-english">Safe</div>
+                            <div class="adjective-pronunciation">ah-mahn</div>
+                        </div>
+                        <div class="adjective-card">
+                            <div class="adjective-indonesian">Berbahaya</div>
+                            <div class="adjective-english">Dangerous</div>
+                            <div class="adjective-pronunciation">bur-bah-hah-yah</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="adjective-placement">
+                    <h2>Adjective Placement</h2>
+                    <div class="placement-rule">
+                        <p>This is a key difference from English! In Indonesian, the adjective <strong>always comes AFTER the noun</strong> it describes.</p>
+                        <p><strong>Pattern:</strong> Noun + Adjective</p>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-indonesian">Mobil besar</div>
+                        <div class="example-english">A big car (Literally: "Car big")</div>
+                        <div class="example-pronunciation">mo-beel buh-sar</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-indonesian">Kopi panas</div>
+                        <div class="example-english">Hot coffee (Literally: "Coffee hot")</div>
+                        <div class="example-pronunciation">ko-pee pah-nahs</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-indonesian">Wanita cantik</div>
+                        <div class="example-english">A beautiful woman (Literally: "Woman beautiful")</div>
+                        <div class="example-pronunciation">wah-nee-tah chan-tik</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-indonesian">Ombak besar</div>
+                        <div class="example-english">Big waves (Literally: "Waves big")</div>
+                        <div class="example-pronunciation">ohm-bak buh-sar</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-indonesian">Pantai sepi</div>
+                        <div class="example-english">Quiet beach (Literally: "Beach quiet")</div>
+                        <div class="example-pronunciation">pan-thai suh-pee</div>
+                    </div>
+                </section>
+
+                <section id="family-vocabulary">
+                    <h2>Family Vocabulary</h2>
+                    <div class="family-grid">
+                        <div class="family-card">
+                            <div class="family-indonesian">Keluarga</div>
+                            <div class="family-english">Family</div>
+                            <div class="family-pronunciation">kuh-loo-ar-gah</div>
+                        </div>
+                        <div class="family-card">
+                            <div class="family-indonesian">Ibu / Mama</div>
+                            <div class="family-english">Mother</div>
+                            <div class="family-pronunciation">ee-boo / mah-mah</div>
+                        </div>
+                        <div class="family-card">
+                            <div class="family-indonesian">Bapak / Ayah</div>
+                            <div class="family-english">Father</div>
+                            <div class="family-pronunciation">bah-pak / ah-yah</div>
+                        </div>
+                        <div class="family-card">
+                            <div class="family-indonesian">Orang tua</div>
+                            <div class="family-english">Parents</div>
+                            <div class="family-pronunciation">or-ahng too-ah</div>
+                        </div>
+                        <div class="family-card">
+                            <div class="family-indonesian">Anak</div>
+                            <div class="family-english">Child</div>
+                            <div class="family-pronunciation">ah-nak</div>
+                        </div>
+                        <div class="family-card">
+                            <div class="family-indonesian">Kakak</div>
+                            <div class="family-english">Older sibling (gender neutral)</div>
+                            <div class="family-pronunciation">kah-kak</div>
+                        </div>
+                        <div class="family-card">
+                            <div class="family-indonesian">Adik</div>
+                            <div class="family-english">Younger sibling (gender neutral)</div>
+                            <div class="family-pronunciation">ah-dik</div>
+                        </div>
+                        <div class="family-card">
+                            <div class="family-indonesian">Suami</div>
+                            <div class="family-english">Husband</div>
+                            <div class="family-pronunciation">swah-mee</div>
+                        </div>
+                        <div class="family-card">
+                            <div class="family-indonesian">Istri</div>
+                            <div class="family-english">Wife</div>
+                            <div class="family-pronunciation">ees-tree</div>
+                        </div>
+                    </div>
+
+                    <p>To specify gender for siblings, you can add <strong>laki-laki</strong> (male) or <strong>perempuan</strong> (female).</p>
+
+                    <div class="example-card">
+                        <div class="example-indonesian">Kakak laki-laki</div>
+                        <div class="example-english">Older brother</div>
+                        <div class="example-pronunciation">kah-kak lah-kee lah-kee</div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-indonesian">Adik perempuan</div>
+                        <div class="example-english">Younger sister</div>
+                        <div class="example-pronunciation">ah-dik puh-room-pahn</div>
+                    </div>
+                </section>
+
+                <section id="possession">
+                    <h2>Possession</h2>
+                    <p>Showing possession is simple. You just put the pronoun after the noun. It's the same structure as with adjectives (Noun + Owner).</p>
+
+                    <div class="possession-example">
+                        <div class="possession-indonesian">Rumah saya</div>
+                        <div class="possession-english">My house (Literally: "House I")</div>
+                        <div class="possession-pronunciation">roo-mah sah-yah</div>
+                    </div>
+
+                    <div class="possession-example">
+                        <div class="possession-indonesian">Nama Anda</div>
+                        <div class="possession-english">Your name (Literally: "Name you")</div>
+                        <div class="possession-pronunciation">nah-mah an-dah</div>
+                    </div>
+
+                    <div class="possession-example">
+                        <div class="possession-indonesian">Buku dia</div>
+                        <div class="possession-english">His/Her book (Literally: "Book he/she")</div>
+                        <div class="possession-pronunciation">boo-koo dee-ah</div>
+                    </div>
+                </section>
+
+                <section id="describing-experiences">
+                    <h2>Describing Conditions & Experiences</h2>
+                    <div class="experience-examples">
+                        <p>Use adjectives to share your experiences:</p>
+
+                        <div class="example-card">
+                            <div class="example-indonesian">Ombaknya sangat besar!</div>
+                            <div class="example-english">The waves are very big! (<strong>sangat</strong> = very)</div>
+                            <div class="example-pronunciation">ohm-bak-nyah sah-ngat buh-sar</div>
+                        </div>
+
+                        <div class="example-card">
+                            <div class="example-indonesian">Warung ini murah dan enak.</div>
+                            <div class="example-english">This eatery is cheap and delicious.</div>
+                            <div class="example-pronunciation">wah-roong ee-nee moo-rah dahn eh-nak</div>
+                        </div>
+
+                        <div class="example-card">
+                            <div class="example-indonesian">Orang di sini sangat baik.</div>
+                            <div class="example-english">The people here are very kind.</div>
+                            <div class="example-pronunciation">or-ahng dee see-nee sah-ngat bah-eek</div>
+                        </div>
+
+                        <div class="example-card">
+                            <div class="example-indonesian">Hati-hati, arusnya kuat.</div>
+                            <div class="example-english">Be careful, the current is strong.</div>
+                            <div class="example-pronunciation">hah-tee hah-tee, ah-roos-nyah koo-at</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="vocabulary">
+                    <h2>Chapter 5 Vocabulary</h2>
+                    <table class="vocabulary-table">
+                        <thead>
+                            <tr>
+                                <th>Indonesian Word</th>
+                                <th>English Translation</th>
+                                <th>Pronunciation Guide</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Besar / Kecil</td>
+                                <td>Big / Small</td>
+                                <td>buh-sar / kuh-cheel</td>
+                            </tr>
+                            <tr>
+                                <td>Baik / Bagus</td>
+                                <td>Good / Nice</td>
+                                <td>bah-eek / bah-goos</td>
+                            </tr>
+                            <tr>
+                                <td>Panas / Dingin</td>
+                                <td>Hot / Cold</td>
+                                <td>pah-nas / ding-in</td>
+                            </tr>
+                            <tr>
+                                <td>Enak</td>
+                                <td>Delicious</td>
+                                <td>eh-nak</td>
+                            </tr>
+                            <tr>
+                                <td>Mahal / Murah</td>
+                                <td>Expensive / Cheap</td>
+                                <td>mah-hal / moo-rah</td>
+                            </tr>
+                            <tr>
+                                <td>Cantik / Ganteng</td>
+                                <td>Beautiful / Handsome</td>
+                                <td>chan-tik / gan-teng</td>
+                            </tr>
+                            <tr>
+                                <td>Ramai / Sepi</td>
+                                <td>Crowded / Quiet</td>
+                                <td>rah-my / suh-pee</td>
+                            </tr>
+                            <tr>
+                                <td>Aman / Berbahaya</td>
+                                <td>Safe / Dangerous</td>
+                                <td>ah-mahn / bur-bah-hah-yah</td>
+                            </tr>
+                            <tr>
+                                <td>Keluarga</td>
+                                <td>Family</td>
+                                <td>kuh-loo-ar-gah</td>
+                            </tr>
+                            <tr>
+                                <td>Ibu / Bapak</td>
+                                <td>Mother / Father</td>
+                                <td>ee-boo / bah-pak</td>
+                            </tr>
+                            <tr>
+                                <td>Kakak / Adik</td>
+                                <td>Older/Younger sibling</td>
+                                <td>kah-kak / ah-dik</td>
+                            </tr>
+                            <tr>
+                                <td>Suami / Istri</td>
+                                <td>Husband / Wife</td>
+                                <td>swah-mee / ees-tree</td>
+                            </tr>
+                            <tr>
+                                <td>Sangat</td>
+                                <td>Very</td>
+                                <td>sah-ngat</td>
+                            </tr>
+                            <tr>
+                                <td>Hati-hati</td>
+                                <td>Be careful</td>
+                                <td>hah-tee hah-tee</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="cultural-note">
+                    <h2>Cultural Note</h2>
+                    <div class="cultural-note">
+                        <h3>Respectful Address</h3>
+                        <p>The words for mother (<strong>Ibu</strong>) and father (<strong>Bapak</strong>) are also very important terms of respect. You use <strong>Bapak</strong> (or the shortened <strong>Pak</strong>) to respectfully address any man who is older than you or in a position of authority (e.g., a teacher, a boss, a government official).</p>
+                        <p>Similarly, you use <strong>Ibu</strong> (or <strong>Bu</strong>) to address any older or respected woman. Using "Pak" or "Bu" before someone's name (e.g., Pak Joko, Bu Siti) is the standard polite way to address them.</p>
+                        <p>This politeness extends to the surf lineup; a smile, a nod, and giving way to local surfers are key to a good session.</p>
+                    </div>
+                </section>
+
+                <section id="quiz">
+                    <h2>Chapter 5 Quiz</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <h4>1. How would you say "a small house" in Indonesian?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Kecil rumah</div>
+                                <div class="quiz-option" data-answer="b">b) Rumah kecil</div>
+                                <div class="quiz-option" data-answer="wrong">c) Ini rumah kecil</div>
+                                <div class="quiz-option" data-answer="wrong">d) Rumah di kecil</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>2. The word "enak" is used to describe...</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Weather</div>
+                                <div class="quiz-option" data-answer="wrong">b) People</div>
+                                <div class="quiz-option" data-answer="c">c) Food</div>
+                                <div class="quiz-option" data-answer="wrong">d) Price</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>3. Which word means "expensive"?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Murah</div>
+                                <div class="quiz-option" data-answer="b">b) Mahal</div>
+                                <div class="quiz-option" data-answer="wrong">c) Besar</div>
+                                <div class="quiz-option" data-answer="wrong">d) Bagus</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>4. How do you say "my book"?</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Saya buku</div>
+                                <div class="quiz-option" data-answer="b">b) Buku saya</div>
+                                <div class="quiz-option" data-answer="wrong">c) Ini buku saya</div>
+                                <div class="quiz-option" data-answer="wrong">d) Buku di saya</div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>5. "Kakak" is the word for...</h4>
+                            <div class="quiz-options">
+                                <div class="quiz-option" data-answer="wrong">a) Younger sibling</div>
+                                <div class="quiz-option" data-answer="b">b) Older sibling</div>
+                                <div class="quiz-option" data-answer="wrong">c) Mother</div>
+                                <div class="quiz-option" data-answer="wrong">d) Father</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="lesson-navigation">
+                    <a href="lesson-04.html" class="nav-button secondary">← Previous: Verbs & Sentence Structure</a>
+                    <a href="lesson-06.html" class="nav-button">Next: Travel & Transportation →</a>
+                    <a href="../index.html" class="nav-button secondary">🏠 Back to Course Overview</a>
+                </div>
+            </div>
+
+            <div class="lesson-sidebar">
+                <div class="sidebar-section">
+                    <h4>Lesson Topics</h4>
+                    <ul>
+                        <li><a href="#common-adjectives">Common Adjectives</a></li>
+                        <li><a href="#adjective-placement">Adjective Placement</a></li>
+                        <li><a href="#family-vocabulary">Family Vocabulary</a></li>
+                        <li><a href="#possession">Possession</a></li>
+                        <li><a href="#describing-experiences">Describing Experiences</a></li>
+                        <li><a href="#vocabulary">Vocabulary List</a></li>
+                        <li><a href="#cultural-note">Cultural Note</a></li>
+                        <li><a href="#quiz">Chapter Quiz</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Quick Reference</h4>
+                    <ul>
+                        <li><a href="https://www.kamus.net/" target="_blank">Indonesian Dictionary</a></li>
+                        <li><a href="https://forvo.com/languages/id/" target="_blank">Pronunciation Guide</a></li>
+                        <li><a href="https://www.indonesianpod101.com/" target="_blank">IndonesianPod101</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Practice</h4>
+                    <ul>
+                        <li><a href="https://www.duolingo.com/course/id/en/Learn-Indonesian" target="_blank">Duolingo Indonesian</a></li>
+                        <li><a href="https://www.lingq.com/en/learn-indonesian-online/" target="_blank">LingQ Indonesian</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bahasa Indonesia Mastery Course. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Quiz functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizOptions = document.querySelectorAll('.quiz-option');
+            
+            quizOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const question = this.closest('.quiz-question');
+                    const allOptions = question.querySelectorAll('.quiz-option');
+                    
+                    // Remove previous selections
+                    allOptions.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    // Mark the selected option
+                    if (this.dataset.answer === 'b' || this.dataset.answer === 'c') {
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.add('incorrect');
+                    }
+                    
+                    // Mark correct answer
+                    allOptions.forEach(opt => {
+                        if (opt.dataset.answer === 'b' || opt.dataset.answer === 'c') {
+                            opt.classList.add('correct');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
